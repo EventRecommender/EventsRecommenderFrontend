@@ -28,6 +28,21 @@
   color: #61dafb;
 }
 
+.App-ButtonGroup {
+  float: center;
+  align-items: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.App-Button {
+  width: 50%;
+  float: center;
+}
+
+.App-rightalign {
+  float: right;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
