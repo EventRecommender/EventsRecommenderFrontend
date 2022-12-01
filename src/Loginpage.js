@@ -1,15 +1,24 @@
-import { render } from "@testing-library/react";
-import React, { useState } from "react";
+import React from "react";
+import Student from "./Student";
+import Organizer from "./Organizer";
+import Admin from "./Admin";
 import './Loginpage.css';
 
 class Login extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {Username: "username",
-                      Password: "password"};
+        this.state = {
+                    Username: "username",
+                    Password: "password",
+                    Loggedin: "Not"
+                    };
+
+        
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCreateUser = this.handleCreateUser.bind(this);
+        this.handleCreateOrg = this.handleCreateOrg.bind(this);
     }
 
     handleChange(event) {
@@ -22,10 +31,31 @@ class Login extends React.Component {
 
     handleSubmit(event) {
         alert("Your favorite name is: " + this.state.Username);
+        this.setState({Loggedin: "Student"});
+        event.preventDefault();
+    }
+
+    handleCreateUser(event) {
+        alert("You tried to create a user");
+        event.preventDefault();
+    }
+
+    handleCreateOrg(event) {
+        alert("You tried to create an org");
         event.preventDefault();
     }
 
     render() {
+        const Loggedin = this.state.Loggedin;
+
+        if(Loggedin === "Student"){
+            return <Student />;
+        }else if(Loggedin === "Org"){
+            return <Organizer />;
+        }else if(Loggedin === "Admin"){
+            return <Admin />;
+        }
+
         return (<>
             <div class="center">
                 <p>This is the login page</p>
@@ -42,25 +72,12 @@ class Login extends React.Component {
                     <input class="useButton" type="submit" value="Login"/>
                     <br />
                 </form>
-                <button class="useButton" onClick={createUser}>Create new user</button>
+                <button class="useButton" onClick={this.handleCreateUser}>Create new user</button>
                 <br />
-                <button class="useButton" onClick={createOrg}>Create new organizer</button>
-            </div>
+                <button class="useButton" onClick={this.handleCreateOrg}>Create new organizer</button>
+            </div>        
         </>);
         }
 };
-
-function createUser() {
-    alert("Hmm");
-    return (<p>Oops</p>);
-};
-
-function createOrg() {
-    return <page />;
-};
-
-function page(props) {
-    return <p>helloS</p>;
-}
 
 export default Login;
