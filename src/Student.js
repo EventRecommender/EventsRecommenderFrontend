@@ -14,7 +14,7 @@ export default function Student() {
       <h4>Logo goes here</h4>
     </div>
     <div>
-      <ButtonGroup class="App-ButtonGroup">
+      <ButtonGroup className="App-ButtonGroup">
         {types.map(type => (<ButtonToggle key={type} active={active === type} onClick={() => setActive(type)}>{type}</ButtonToggle>))}
       </ButtonGroup>
       <div>
