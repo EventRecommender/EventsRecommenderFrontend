@@ -1,0 +1,10 @@
+.center {
+    float: center;
+    align-self: center;
+    align-content: center;
+}
+
+.useButton {
+    width: 20%;
+    align-self: center;
+}
