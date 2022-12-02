@@ -3,7 +3,6 @@ import Student from "./Student";
 import Organizer from "./Organizer";
 import Admin from "./Admin";
 import CreateUser from "./CreateUser";
-import CreateOrg from "./CreateOrg";
 import './Loginpage.css';
 import './Student.css';
 
@@ -13,14 +12,12 @@ class Login extends React.Component {
         this.state = {
                     Username: "username",
                     Password: "password",
-                    Loggedin: "Not",
-                    Createnew: "No"
+                    Loggedin: "Not"
                     };       
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCreateUser = this.handleCreateUser.bind(this);
-        this.handleCreateOrg = this.handleCreateOrg.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
     }
 
@@ -58,12 +55,6 @@ class Login extends React.Component {
         event.preventDefault();
     }
 
-    handleCreateOrg(event) {
-        alert("You tried to create an org");
-        this.setState({Loggedin: "NewOrg"});
-        event.preventDefault();
-    }
-
     handleLogout(event) {
         this.setState({Loggedin: "Not"});
         event.preventDefault();
@@ -92,13 +83,10 @@ class Login extends React.Component {
                 content = (<>{logoutButton}<Admin /></>);
                 break;
 
-            case "NewOrg":
+            case "NewUser":
                 content = (<>{backbutton}<CreateUser /></>);
                 break;
 
-            case "NewUser":
-                content = (<>{backbutton}<CreateOrg /></>);
-                break;
             default:
                 content = (<>
                     <div className="center">
@@ -118,7 +106,6 @@ class Login extends React.Component {
                         </form>
                         <button className="useButton" onClick={this.handleCreateUser}>Create new user</button>
                         <br />
-                        <button className="useButton" onClick={this.handleCreateOrg}>Create new organizer</button>
                     </div>        
                 </>);
                 break;
