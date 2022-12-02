@@ -2,7 +2,10 @@ import React from "react";
 import Student from "./Student";
 import Organizer from "./Organizer";
 import Admin from "./Admin";
+import CreateUser from "./CreateUser";
+import CreateOrg from "./CreateOrg";
 import './Loginpage.css';
+import './Student.css';
 
 class Login extends React.Component {
     constructor(props) {
@@ -12,9 +15,7 @@ class Login extends React.Component {
                     Password: "password",
                     Loggedin: "Not",
                     Createnew: "No"
-                    };
-
-        
+                    };       
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -76,6 +77,7 @@ class Login extends React.Component {
         const Loggedin = this.state.Loggedin;
         let content;
         let logoutButton = <button onClick={this.handleLogout}>Logout</button>
+        let backbutton = <button onClick={this.handleLogout}>Back</button>
         
         switch (Loggedin) {
             case "Student":
@@ -91,11 +93,11 @@ class Login extends React.Component {
                 break;
 
             case "NewOrg":
-
+                content = (<>{backbutton}<CreateUser /></>);
                 break;
 
             case "NewUser":
-
+                content = (<>{backbutton}<CreateOrg /></>);
                 break;
             default:
                 content = (<>
