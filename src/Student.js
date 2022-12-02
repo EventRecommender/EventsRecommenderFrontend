@@ -2,9 +2,18 @@ import React, { useState } from "react";
 import { Button, ButtonGroup } from "@material-ui/core";
 import './Student.css';
 import styled from "styled-components";
+import Recommendedactivities from "./Recommendedactivities";
   
 export default function Student() {
   const [active, setActive] = useState(types[0])
+  let content;
+
+  if(active === types[0]){
+    content = <Recommendedactivities />;
+  }else if(active === types[1]){
+    
+  }
+
   return (
     <>
     <div class="App-rightalign">
@@ -18,7 +27,7 @@ export default function Student() {
         {types.map(type => (<ButtonToggle key={type} active={active === type} onClick={() => setActive(type)}>{type}</ButtonToggle>))}
       </ButtonGroup>
       <div>
-        <h1>Activities goes here</h1>
+        {content}
       </div>
     </div>
     </>

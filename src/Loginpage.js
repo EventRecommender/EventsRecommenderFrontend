@@ -111,9 +111,9 @@ class Login extends React.Component {
                 break;
         };
 
-        return (<body>
+        return (<div>
                 {content}
-                </body>);
+                </div>);
         };
 };
 
