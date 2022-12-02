@@ -11,7 +11,7 @@ export default function Student() {
   if(active === types[0]){
     content = <Recommendedactivities />;
   }else if(active === types[1]){
-    
+
   }
 
   return (
@@ -32,14 +32,6 @@ export default function Student() {
     </div>
     </>
   );
-}
-
-function recommend() {
-  alert('Recommended');
-}
-
-function calendar() {
-  alert('Calendar');
 }
 
 const types = ['Recommendation', 'Calendar'];
