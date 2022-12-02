@@ -4,11 +4,13 @@ import './index.css';
 import Student from './Student';
 import Login from './Loginpage';
 import reportWebVitals from './reportWebVitals';
+import App from './App';
+import Calendar from './Components/Calendar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Login />
+    <Calendar />
   </React.StrictMode>
 );
 
