@@ -1,4 +1,5 @@
 import React from "react";
+import activity from "./Activity";
 
 export default function Recommendedactivities() {
 
@@ -25,7 +26,3 @@ function fetchActivities(){
 
     return eventlist;
 };
-
-const activity = function(id, name) {
-    return {id, name};
-}
