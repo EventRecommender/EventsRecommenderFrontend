@@ -10,7 +10,8 @@ class Login extends React.Component {
         this.state = {
                     Username: "username",
                     Password: "password",
-                    Loggedin: "Not"
+                    Loggedin: "Not",
+                    Createnew: "No"
                     };
 
         
@@ -52,11 +53,13 @@ class Login extends React.Component {
 
     handleCreateUser(event) {
         alert("You tried to create a user");
+        this.setState({Loggedin: "NewUser"});
         event.preventDefault();
     }
 
     handleCreateOrg(event) {
         alert("You tried to create an org");
+        this.setState({Loggedin: "NewOrg"});
         event.preventDefault();
     }
 
@@ -74,45 +77,55 @@ class Login extends React.Component {
         let content;
         let logoutButton = <button onClick={this.handleLogout}>Logout</button>
         
-        if(Loggedin === "Student"){
-            content = (<>{logoutButton}<Student /></>);
+        switch (Loggedin) {
+            case "Student":
+                content = (<>{logoutButton}<Student /></>);
+                break;
 
-        }else if(Loggedin === "Org"){
-            content = (<>{logoutButton}<Organizer /></>);
+            case "Org": 
+                content = (<>{logoutButton}<Organizer /></>);
+                break;
 
-        }else if(Loggedin === "Admin"){
-            content = (<>{logoutButton}<Admin /></>);
+            case "Admin":
+                content = (<>{logoutButton}<Admin /></>);
+                break;
 
-        }else{
-            content = (<>
-                <div className="center">
-                    <p>This is the login page</p>
-                    <br/>
-                    <form className="center" onSubmit={this.handleSubmit}>
-                        <label>Username: 
-                            <input name="Username" type="text" value={this.state.Username} onChange={this.handleChange}/>
-                        </label>
+            case "NewOrg":
+
+                break;
+
+            case "NewUser":
+
+                break;
+            default:
+                content = (<>
+                    <div className="center">
+                        <p>This is the login page</p>
+                        <br/>
+                            <form className="center" onSubmit={this.handleSubmit}>
+                                <label>Username: 
+                                    <input name="Username" type="text" value={this.state.Username} onChange={this.handleChange}/>
+                                </label>
+                            <br />
+                                <label>Password: 
+                                    <input className="center" name="Password" type="text" value={this.state.Password} onChange={this.handleChange}/>
+                                </label>
+                            <br />
+                                <input className="useButton" type="submit" value="Login"/>
+                            <br />
+                        </form>
+                        <button className="useButton" onClick={this.handleCreateUser}>Create new user</button>
                         <br />
-                        <label>Password: 
-                            <input className="center" name="Password" type="text" value={this.state.Password} onChange={this.handleChange}/>
-                        </label>
-                        <br />
-                        <input className="useButton" type="submit" value="Login"/>
-                        <br />
-                    </form>
-                    <button className="useButton" onClick={this.handleCreateUser}>Create new user</button>
-                    <br />
-                    <button className="useButton" onClick={this.handleCreateOrg}>Create new organizer</button>
-                </div>        
-            </>);
-        }
+                        <button className="useButton" onClick={this.handleCreateOrg}>Create new organizer</button>
+                    </div>        
+                </>);
+                break;
+        };
 
         return (<body>
                 {content}
                 </body>);
         };
-
-        //For test commit
 };
 
 export default Login;
