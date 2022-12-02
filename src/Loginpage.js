@@ -72,14 +72,16 @@ class Login extends React.Component {
     render() {
         const Loggedin = this.state.Loggedin;
         let content;
+        let logoutButton = <button onClick={this.handleLogout}>Logout</button>
+        
         if(Loggedin === "Student"){
-            content = <Student />;
+            content = (<>{logoutButton}<Student /></>);
 
         }else if(Loggedin === "Org"){
-            content = <Organizer />;
+            content = (<>{logoutButton}<Organizer /></>);
 
         }else if(Loggedin === "Admin"){
-            content = <Admin />;
+            content = (<>{logoutButton}<Admin /></>);
 
         }else{
             content = (<>
@@ -106,7 +108,6 @@ class Login extends React.Component {
         }
 
         return (<body>
-                <button onClick={this.handleLogout}>Logout</button>
                 {content}
                 </body>);
         };
