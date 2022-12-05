@@ -6,12 +6,13 @@ import Login from './Loginpage';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 import Calendar from './Components/Calendar';
+import ContextWrapper from './Context/ContextWrapper';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <ContextWrapper>
     <Calendar />
-  </React.StrictMode>
+  </ContextWrapper>
 );
 
 // If you want to start measuring performance in your app, pass a function

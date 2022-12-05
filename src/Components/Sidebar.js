@@ -1,7 +1,10 @@
 import React from 'react'
 
-export default function Sidebar() {
+export default function Sidebar()
+{
   return (
-    <div></div>
+    <aside className='border p-5'>
+
+    </aside>
   )
 }
