@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Button, ButtonGroup } from "@material-ui/core";
 import './Student.css';
 import styled from "styled-components";
 import Recommendedactivities from "./Recommendedactivities";
@@ -35,6 +34,8 @@ export default function Student({id}) {
 }
 
 const types = ['Recommendation', 'Calendar'];
+
+const Button = styled.Button;
 
 const ButtonToggle = styled(Button)`
   float: center;

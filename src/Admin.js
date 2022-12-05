@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import { Button, ButtonGroup } from "@material-ui/core";
 import styled from "styled-components";
 import Userlist from "./Userlist";
 import Activitylist from "./Activitylist";
@@ -43,6 +42,8 @@ function Admin({id}) {
   };
 
   const types = ["Users", "Activities"];
+
+  const Button = styled.Button;
 
   const ButtonToggle = styled(Button)`
   float: center;

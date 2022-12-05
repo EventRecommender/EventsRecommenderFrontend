@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Button, ButtonGroup } from "@material-ui/core";
 import styled from "styled-components";
 import CreateActivity from "./CreateActivity";
 import CreatedActivities from "./CreatedActivities";
@@ -36,6 +35,8 @@ export default function Organizer({id}) {
 
   const types = ["Created Events", "Create Events"];
 
+  const Button = styled.Button;
+  
   const ButtonToggle = styled(Button)`
   float: center;
   width: 50%;
