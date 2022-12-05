@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from "react";
-import activity from "./Activity";
 
-export default function CreatedActivities() {
+
+export default function CreatedActivities({id}) {
     const [activities, setActivities] = useState([]);
 
     useEffect(() => {
-        fetch("").then(res => res.json())
+        fetch('' + new URLSearchParams({id: id})).then(res => res.json())
             .then((result) => {setActivities(result);}, 
-            (error) => {alert("Error");})}, [])
+            (error) => {alert("Error");})}, [id]);
+
+            return (
+                <ul>
+            {activities.map((data) => (
+              <li key={data.id}> 
+                <p>{data.name}</p>
+              </li>
+            ))}
+          </ul>
+        );
 };

@@ -4,14 +4,14 @@ import './Student.css';
 import styled from "styled-components";
 import Recommendedactivities from "./Recommendedactivities";
   
-export default function Student() {
+export default function Student({id}) {
   const [active, setActive] = useState(types[0])
   let content;
 
   if(active === types[0]){
-    content = <Recommendedactivities />;
+    content = <Recommendedactivities id = {id}/>;
   }else if(active === types[1]){
-
+    //Calendar goes here
   }
 
   return (

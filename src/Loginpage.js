@@ -34,17 +34,14 @@ class Login extends React.Component {
 
     //The handleSubmit takes care of the submit action on the page.
     handleSubmit(event) {
-        
+        let formData = new FormData();
+        formData.append('username', this.state.Username);
+        formData.append('password', this.state.Password);
 
         //This is the part that makes a request to the backend.
-        fetch('',{method: 'GET'})
-        .then((response) => response.json())
-        .then((responseJson) => {alert(JSON.stringify(responseJson));
-        console.log(responseJson);
-        }).catch((error) => {alert(JSON.stringify(error));
-        console.error(error);});
+        fetch('', formData)
 
-        fetch('').then(res => res.json()).then((result) => {this.setState({Verify: result.items});
+        .then(res => res.json()).then((result) => {this.setState({Verify: result.items});
     
         },
         (error) => {alert(JSON.stringify(error))}
@@ -94,15 +91,15 @@ class Login extends React.Component {
         
         switch (Loggedin) {
             case "Student":
-                content = (<>{logoutButton}<Student /></>);
+                content = (<>{logoutButton}<Student id = {1}/></>);
                 break;
 
             case "Org": 
-                content = (<>{logoutButton}<Organizer /></>);
+                content = (<>{logoutButton}<Organizer id = {1}/></>);
                 break;
 
             case "Admin":
-                content = (<>{logoutButton}<Admin /></>);
+                content = (<>{logoutButton}<Admin id = {1}/></>);
                 break;
 
             case "NewUser":

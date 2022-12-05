@@ -4,13 +4,13 @@ import styled from "styled-components";
 import CreateActivity from "./CreateActivity";
 import CreatedActivities from "./CreatedActivities";
 
-export default function Organizer() {
+export default function Organizer({id}) {
     const [active, setActive] = useState(types[0])
 
     let content;
 
     if(active === types[0]){
-        content = <CreatedActivities />
+        content = <CreatedActivities id = {id}/>
     }else if(active === types[1]){
         content = <CreateActivity />;
     };

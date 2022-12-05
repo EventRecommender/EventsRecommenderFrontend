@@ -17,6 +17,20 @@ class CreateUser extends React.Component {
 
     handleSubmit(event) {
         alert("You created user");
+        let formData = new FormData();
+        formData.append('username', this.state.Username);
+        formData.append('password', this.state.Password);
+        formData.append('city', this.state.City);
+        formData.append('institue', this.state.Institute);
+        formData.append('role', this.state.Role);
+
+        fetch('', {method: 'POST', body: formData}).then((response) => response.json())
+        .then((result) => {
+          console.log('Success:', result);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
         event.preventDefault();
     };
 
@@ -36,15 +50,15 @@ class CreateUser extends React.Component {
         return (<>
             <form onSubmit={this.handleSubmit}>
                 <label>Username: 
-                <input name="Username" type="text" value={this.state.Username} onChange={this.handleChange}/>
+                <input name="Username" type="text" value={this.state.Username} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>Password:
-                <input name="Password" type="text" value={this.state.Password} onChange={this.handleChange}/>
+                <input name="Password" type="text" value={this.state.Password} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>City:
-                <input name="City" type="text" value={this.state.City} onChange={this.handleChange}/>
+                <input name="City" type="text" value={this.state.City} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>Institute:
