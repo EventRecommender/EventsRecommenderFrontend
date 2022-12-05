@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, ButtonGroup } from "@material-ui/core";
 import styled from "styled-components";
 import CreateActivity from "./CreateActivity";
+import CreatedActivities from "./CreatedActivities";
 
 export default function Organizer() {
     const [active, setActive] = useState(types[0])
@@ -9,7 +10,7 @@ export default function Organizer() {
     let content;
 
     if(active === types[0]){
-      
+        content = <CreatedActivities />
     }else if(active === types[1]){
         content = <CreateActivity />;
     };
