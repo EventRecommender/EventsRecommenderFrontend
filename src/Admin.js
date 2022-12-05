@@ -1,21 +1,27 @@
 import React, {useState} from "react";
 import { Button, ButtonGroup } from "@material-ui/core";
 import styled from "styled-components";
-import Userlist from "Userlist.js";
-import Activitylist from "Activitylist.js";
+import Userlist from "./Userlist";
+import Activitylist from "./Activitylist";
 import './Admin.css';
 
+//This is the admin page component
 function Admin({id}) {
 
+    //This is the what controls the button states.
     const [active, setActive] = useState(types[0])
 
+    //The content is what is being displayed
     let content;
 
+    //This if decides what to display, based on the button state.
     if(active === types[0]){
         content = <Userlist/>
     }else if(active === types[1]){
         content = <Activitylist />;
     };
+
+    //The html code of the admin component.
     return (
       <>
       <div class="App-rightalign">
