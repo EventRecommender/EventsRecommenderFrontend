@@ -9,18 +9,21 @@ import './Student.css';
 class Login extends React.Component {
     constructor(props) {
         super(props);
+        //State variables.
         this.state = {
                     Username: "username",
                     Password: "password",
-                    Loggedin: "Not"
+                    Loggedin: "Not",
+                    Verify: ""
                     };       
-
+        
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCreateUser = this.handleCreateUser.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
     }
 
+    //This makes sure that the inputs can be updated properly.
     handleChange(event) {
         const target = event.target;
         const value = target.value;
@@ -29,10 +32,26 @@ class Login extends React.Component {
         this.setState({[name]: value});
     };
 
+    //The handleSubmit takes care of the submit action on the page.
     handleSubmit(event) {
-        alert("Your favorite name is: " + this.state.Username);
+        
 
-        //These if's should check via an http request to the user.
+        //This is the part that makes a request to the backend.
+        fetch('',{method: 'GET'})
+        .then((response) => response.json())
+        .then((responseJson) => {alert(JSON.stringify(responseJson));
+        console.log(responseJson);
+        }).catch((error) => {alert(JSON.stringify(error));
+        console.error(error);});
+
+        fetch('').then(res => res.json()).then((result) => {this.setState({Verify: result.items});
+    
+        },
+        (error) => {alert(JSON.stringify(error))}
+
+        );
+        
+        alert("Your favorite name is: " + this.state.Verify);
 
         if(this.state.Username === "Student"){
             this.setState({Loggedin: "Student"});
@@ -49,21 +68,24 @@ class Login extends React.Component {
         event.preventDefault();
     }
 
+    //The handler for when you want to create a user.
     handleCreateUser(event) {
-        alert("You tried to create a user");
         this.setState({Loggedin: "NewUser"});
         event.preventDefault();
     }
 
+    //The handler for logging out.
     handleLogout(event) {
         this.setState({Loggedin: "Not"});
         event.preventDefault();
     }
 
+    //The logout button that is rendered.
     Logout() {
     return <button onClick={this.handleLogout}>Logout</button>;
     };
 
+    //The function that renders everything.
     render() {
         const Loggedin = this.state.Loggedin;
         let content;
