@@ -8,9 +8,9 @@ class CreateActivity extends React.Component{
             Title: "",
             Host: "",
             City: "",
-            Date: "01-01-2022",
+            Date: "",
             Image: "",
-            Descriptio: ""
+            Description: ""
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,7 +26,21 @@ class CreateActivity extends React.Component{
     };
 
     handleSubmit(event) {
-        alert("You created user");
+        alert("You created activity");
+        let formData = new FormData();
+        formData.append('title', this.state.Title);
+        formData.append('host', this.state.Host);
+        formData.append('city', this.state.City);
+        formData.append('date', this.state.Date);
+        formData.append('image', this.state.Image);
+        formData.append('description', this.state.Description);
+        fetch('', {method: 'POST', body: formData}).then((response) => response.json())
+        .then((result) => {
+          console.log('Success:', result);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
         event.preventDefault();
     };
 
@@ -34,19 +48,19 @@ class CreateActivity extends React.Component{
         return(<>
             <form onSubmit={this.handleSubmit}>
                 <label>Title: 
-                <input name="Title" type="text" value={this.state.Title} onChange={this.handleChange}/>
+                <input name="Title" type="text" value={this.state.Title} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>Host:
-                <input name="Host" type="text" value={this.state.Host} onChange={this.handleChange}/>
+                <input name="Host" type="text" value={this.state.Host} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>City:
-                <input name="City" type="text" value={this.state.City} onChange={this.handleChange}/>
+                <input name="City" type="text" value={this.state.City} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>Date:
-                <input name="Date" type="datetime-local" value={this.state.Date} onChange={this.handleChange}/>
+                <input name="Date" type="datetime-local" value={this.state.Date} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>Image:
