@@ -35,7 +35,7 @@ export default function Organizer({id}) {
 
   const types = ["Created Events", "Create Events"];
 
-  const Button = styled.Button;
+  const Button = styled.button;
   
   const ButtonToggle = styled(Button)`
   float: center;

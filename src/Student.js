@@ -35,7 +35,7 @@ export default function Student({id}) {
 
 const types = ['Recommendation', 'Calendar'];
 
-const Button = styled.Button;
+const Button = styled.button;
 
 const ButtonToggle = styled(Button)`
   float: center;

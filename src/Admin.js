@@ -43,7 +43,7 @@ function Admin({id}) {
 
   const types = ["Users", "Activities"];
 
-  const Button = styled.Button;
+  const Button = styled.button;
 
   const ButtonToggle = styled(Button)`
   float: center;
@@ -56,5 +56,5 @@ function Admin({id}) {
   `}`;
 
   const ButtonGroup = styled.div`display: flex`;
-  
+
 export default Admin;
