@@ -45,5 +45,6 @@ export default function Organizer({id}) {
     active &&
     `
     opacity: 1;
-  `}
-`;
+  `}`;
+
+  const ButtonGroup = styled.div`display: flex`;

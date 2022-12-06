@@ -47,3 +47,5 @@ const ButtonToggle = styled(Button)`
     opacity: 1;
   `}
 `;
+
+const ButtonGroup = styled.div`display: flex`;

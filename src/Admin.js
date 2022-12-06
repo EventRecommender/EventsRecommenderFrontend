@@ -55,5 +55,6 @@ function Admin({id}) {
     opacity: 1;
   `}`;
 
-
+  const ButtonGroup = styled.div`display: flex`;
+  
 export default Admin;
