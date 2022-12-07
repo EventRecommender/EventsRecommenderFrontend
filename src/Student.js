@@ -15,14 +15,14 @@ export default function Student({id}) {
 
   return (
     <>
-    <div class="App-rightalign">
+    <div className="App-rightalign">
       <h5>Username goes here</h5>
     </div>
     <div style={{ display: "block", padding: 30 }}>
       <h4>Logo goes here</h4>
     </div>
     <div>
-      <ButtonGroup className="App-ButtonGroup">
+      <ButtonGroup data-testid="ButtonGroupS" className="App-ButtonGroup">
         {types.map(type => (<ButtonToggle key={type} active={active === type} onClick={() => setActive(type)}>{type}</ButtonToggle>))}
       </ButtonGroup>
       <div>
@@ -35,7 +35,18 @@ export default function Student({id}) {
 
 const types = ['Recommendation', 'Calendar'];
 
-const Button = styled.button;
+const Button = styled.button`background-color: black;
+color: white;
+font-size: 20px;
+padding: 10px 60px;
+border-radius: 5px;
+margin: 10px 0px;
+cursor: pointer;
+&:disabled {
+  color: grey;
+  opacity: 0.7;
+  cursor: default;
+}`;
 
 const ButtonToggle = styled(Button)`
   float: center;
@@ -45,7 +56,6 @@ const ButtonToggle = styled(Button)`
     active &&
     `
     opacity: 1;
-  `}
-`;
+  `}`;
 
 const ButtonGroup = styled.div`display: flex`;
