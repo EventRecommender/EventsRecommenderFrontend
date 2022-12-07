@@ -7,7 +7,7 @@ export default function CreatedActivities({id}) {
     useEffect(() => {
         fetch('' + new URLSearchParams({id: id})).then(res => res.json())
             .then((result) => {setActivities(result);}, 
-            (error) => {alert("Error");})}, [id]);
+            (error) => {alert("Error");})}, [activities, id]);
 
             return (
                 <ul>
