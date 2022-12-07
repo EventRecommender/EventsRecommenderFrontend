@@ -5,7 +5,7 @@ export default function Recommendedactivities({id}) {
 
     const activity = fetchActivities();
     const [activities, setActivities] = useState([]);
-    alert(id);
+
     useEffect(() => {
         fetch('' + new URLSearchParams({id: id})).then(res => res.json())
             .then((result) => {setActivities(result);}, 
