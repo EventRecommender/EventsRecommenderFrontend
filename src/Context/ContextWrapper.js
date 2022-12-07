@@ -8,7 +8,14 @@ export default function ContextWrapper(props)
     const [showActivityModel, setShowActivityModel] = useState(null);
     
     return (
-        <GlobalContext.Provider value={{monthIndex, setMonthIndex}}>
+        <GlobalContext.Provider 
+        value=
+        {{
+         monthIndex, 
+         setMonthIndex,
+         showActivityModel,
+         setShowActivityModel
+         }}>
             {props.children}
         </GlobalContext.Provider>
     )

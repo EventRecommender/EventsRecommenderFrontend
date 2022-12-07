@@ -17,8 +17,8 @@ export default function CalendarHeader({ month }, { currentYear })
   }
 
   return (
-    <header className='px-2 py-2 flex items-center'>
-      <div className='flex items-stretch'>
+    <header className='px-2 py-2 place-items-center'>
+      <div className='flex'>
         <button onClick={handlePrevMonth}>
           <span className='material-icons-outlined cursor-pointer text-gray-600 mx-2'>
             chevron_left
