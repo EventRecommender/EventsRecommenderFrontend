@@ -22,7 +22,6 @@ export default function Calendar()
       <React.Fragment>
          {showActivityModel && <ActivityModel />}
          <div className='h-screen flex flex-col'>
-            <PageToggleBar/>
             <CalendarHeader />
             <div className='flex flex-1'>
                <Month month={currentMonth} />

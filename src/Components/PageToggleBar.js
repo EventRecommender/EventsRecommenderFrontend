@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function PageToggleBar() 
 {
+   const [selected, setSelected] = useState('calendar')
+
   return (
-    <div className='py-4 flex items-center'>
-      <button className='border flex-1'>
+    <div className='flex items-center'>
+      <button onClick={() => setSelected("recommended events")} className='border flex-1 hover:bg-gray-200 focus:outline-none'>
          <header>
             Recommended Events
          </header>
       </button>
-      <button className='border flex-1'>
+      <button onClick={() => setSelected("calendar")} className='border flex-1 hover:bg-gray-200 focus:outline-none'>
          <header>
             Calendar
          </header>
