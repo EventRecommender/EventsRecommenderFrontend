@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
-import Student from './Student';
+import Organizer from './Organizer';
 import React from 'react';
 
 test('Render Buttongroup', () => {
-  render(<Student />);
-  const ButtonElement = screen.getByTestId('ButtonGroupS');
+  render(<Organizer />);
+  const ButtonElement = screen.getByTestId('ButtonGroupO');
   expect(ButtonElement).toBeInTheDocument();
 });
