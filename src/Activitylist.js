@@ -8,13 +8,13 @@ export default function Activitylist() {
     useEffect(() => {
         fetch('').then(res => res.json())
             .then((result) => {setActivities(result);}, 
-            (error) => {alert("Error");})}, []);
+            (error) => {setActivities([{id: 1, name: "Error"}]);})}, []);
 
     //This is the HTML code that displays the list.
     return (
         <ul>
           {activities.map((data) => (
-            <li key={data.id}> 
+            <li data-testid="list" key={data.id}> 
               <p>{data.name}</p>
             </li>
           ))}
