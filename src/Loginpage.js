@@ -92,7 +92,7 @@ class Login extends React.Component {
         
         switch (Loggedin) {
             case "Student":
-                content = (<>{logoutButton}<Student id = {1}/></>);
+                content = (<>{logoutButton}<Student2/></>);
                 break;
 
             case "Org": 

@@ -4,9 +4,10 @@ import GlobalContext from '../Context/GlobalContext'
 
 export default function ActivityModel()
 {
-   const [activityTitle, setActivityTitle] = useState('')
-   const [activityLocation, setActivityLocation] = useState('')
-   const { setShowActivityModel } = useContext(GlobalContext)
+    const [activityTitle, setActivityTitle] = useState('')
+    const [activityLocation, setActivityLocation] = useState('')
+    const { setShowActivityModel } = useContext(GlobalContext)
+    
     return (
         <div className='h-screen w-full fixed left-0 top-0 flex justify-center items-center'>
             <form className='bg-white rounded-lg shadow-2xl w-1/4'>
@@ -48,6 +49,7 @@ export default function ActivityModel()
                   <div>URL</div>
                   <div>Description</div>
                 </div>
+                
             </form>
         </div>
     )
