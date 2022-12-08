@@ -17,11 +17,7 @@ class CreateUser extends React.Component {
 
     handleSubmit(event) {
         alert("You created user");
-        let userinfo = {'username':this.state.Username,
-        'password':this.state.Password,
-        'city':this.state.City,
-        'institue':this.state.Institute,
-        'role':this.state.Role};
+        let userinfo = JSON.stringify({'username':this.state.Username, 'password':this.state.Password,'city':this.state.City,'institue':this.state.Institute,'role':this.state.Role});
 
         fetch('', {method: 'POST', body: userinfo}).then((response) => response.json())
         .then((result) => {
