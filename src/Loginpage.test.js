@@ -23,12 +23,24 @@ test('Renders password input', () => {
 
 test('Render Logout button', () => {
   render(<Login />);
+  const InputElement = screen.getByDisplayValue("username");
+  InputElement.setSelectionRange(0, 8);
+  userEvent.type(InputElement, '{backspace}Student');
+  userEvent.click(screen.getByDisplayValue("Login"));
+
   const ButtonElement = screen.getByTestId("LogoutButton");
-  expect(ButtonElement).not.toBeInTheDocument();
+  expect(ButtonElement).toBeInTheDocument();
+});
+
+test('Render create new user button', () => {
+  render(<Login />);
+  const ButtonElement = screen.getByTestId("UserCreate");
+  expect(ButtonElement).toBeInTheDocument();
 });
 
 test('Render BackButton', () => {
   render(<Login />);
+  userEvent.click(screen.getByTestId("UserCreate"));
   const ButtonElement = screen.getByTestId("BackButton");
-  expect(ButtonElement).not.toBeInTheDocument();
+  expect(ButtonElement).toBeInTheDocument();
 });

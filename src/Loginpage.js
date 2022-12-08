@@ -34,12 +34,10 @@ class Login extends React.Component {
 
     //The handleSubmit takes care of the submit action on the page.
     handleSubmit(event) {
-        let formData = new FormData();
-        formData.append('username', this.state.Username);
-        formData.append('password', this.state.Password);
+        let loginData = JSON.stringify({'username':this.state.Username, 'password':this.state.Password});
 
         //This is the part that makes a request to the backend.
-        fetch('', formData)
+        fetch('', loginData)
 
         .then(res => res.json()).then((result) => {this.setState({Verify: result.items});
     
@@ -118,7 +116,7 @@ class Login extends React.Component {
                                 <input className="useButton" type="submit" value="Login"/>
                             <br />
                         </form>
-                        <button className="useButton" onClick={this.handleCreateUser}>Create new user</button>
+                        <button data-testid="UserCreate" className="useButton" onClick={this.handleCreateUser}>Create new user</button>
                         <br />
                     </div>        
                 </>);
