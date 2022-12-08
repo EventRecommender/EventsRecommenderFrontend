@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import activity from "./Activity";
 
 export default function Recommendedactivities({id}) {
 
