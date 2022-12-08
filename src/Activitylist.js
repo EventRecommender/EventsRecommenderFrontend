@@ -10,12 +10,19 @@ export default function Activitylist() {
             .then((result) => {setActivities(result);}, 
             (error) => {setActivities([{id: 1, name: "Error"}]);})}, []);
 
+  function deleteActivity(event, id){
+    event.preventDefault();
+    fetch('', {method: 'POST', body: id}).then(res => res.json())
+    .then((result) => {alert("Success");},
+    (error) => {alert("Failed to delete user " + id); setActivities([{id: 2, name: "ERROR ERROR"}])}
+    );};
     //This is the HTML code that displays the list.
     return (
         <ul>
-          {activities.map((data) => (
-            <li data-testid="list" key={data.id}> 
+          {activities.map((data, index) => (
+            <li data-testid="list" key={index}> 
               <p>{data.name}</p>
+              <button onClick={(event) => deleteActivity(event, data.id)}>Delete User</button>
             </li>
           ))}
         </ul>
