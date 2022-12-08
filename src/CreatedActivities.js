@@ -7,12 +7,12 @@ export default function CreatedActivities({id}) {
     useEffect(() => {
         fetch('' + new URLSearchParams({id: id})).then(res => res.json())
             .then((result) => {setActivities(result);}, 
-            (error) => {alert("Error");})}, [activities, id]);
+            (error) => {setActivities([{id: 1, name: "Error"}]);})}, [activities, id]);
 
             return (
                 <ul>
             {activities.map((data) => (
-              <li key={data.id}> 
+              <li data-testid="list" key={data.id}> 
                 <p>{data.name}</p>
               </li>
             ))}
