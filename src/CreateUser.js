@@ -17,14 +17,13 @@ class CreateUser extends React.Component {
 
     handleSubmit(event) {
         alert("You created user");
-        let formData = new FormData();
-        formData.append('username', this.state.Username);
-        formData.append('password', this.state.Password);
-        formData.append('city', this.state.City);
-        formData.append('institue', this.state.Institute);
-        formData.append('role', this.state.Role);
+        let userinfo = {'username':this.state.Username,
+        'password':this.state.Password,
+        'city':this.state.City,
+        'institue':this.state.Institute,
+        'role':this.state.Role};
 
-        fetch('', {method: 'POST', body: formData}).then((response) => response.json())
+        fetch('', {method: 'POST', body: userinfo}).then((response) => response.json())
         .then((result) => {
           console.log('Success:', result);
         })

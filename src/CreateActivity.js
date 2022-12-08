@@ -27,14 +27,14 @@ class CreateActivity extends React.Component{
 
     handleSubmit(event) {
         alert("You created activity");
-        let formData = new FormData();
-        formData.append('title', this.state.Title);
-        formData.append('host', this.state.Host);
-        formData.append('city', this.state.City);
-        formData.append('date', this.state.Date);
-        formData.append('image', this.state.Image);
-        formData.append('description', this.state.Description);
-        fetch('', {method: 'POST', body: formData}).then((response) => response.json())
+        let activityinfo = {'title':this.state.Title, 
+        'host':this.state.Host,
+        'city':this.state.City,
+        'date':this.state.Date,
+        'image':this.state.Image,
+        'description':this.state.Description};
+
+        fetch('', {method: 'POST', body: activityinfo}).then((response) => response.json())
         .then((result) => {
           console.log('Success:', result);
         })
