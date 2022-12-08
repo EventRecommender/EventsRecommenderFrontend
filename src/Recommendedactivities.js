@@ -3,7 +3,6 @@ import activity from "./Activity";
 
 export default function Recommendedactivities({id}) {
 
-    const activity = fetchActivities();
     const [activities, setActivities] = useState([]);
 
     useEffect(() => {
@@ -12,23 +11,11 @@ export default function Recommendedactivities({id}) {
             (error) => {setActivities([{id: 1, name: "Error"}]);})}, [id]);
     return (
         <ul>
-          {activity.map((data) => (
+          {activities.map((data) => (
             <li data-testid="list" key={data.id}> 
               <p>{data.name}</p>
             </li>
           ))}
         </ul>
       );
-};
-
-function fetchActivities(){
-
-    const eventlist = [];
-    let i = 0;
-    while(i < 2){
-        eventlist.push(activity(i, "Dolmere"));
-        i = i + 1;
-    }
-
-    return eventlist;
 };
