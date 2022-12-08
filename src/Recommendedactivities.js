@@ -9,11 +9,11 @@ export default function Recommendedactivities({id}) {
     useEffect(() => {
         fetch('' + new URLSearchParams({id: id})).then(res => res.json())
             .then((result) => {setActivities(result);}, 
-            (error) => {alert("Error");})}, [id]);
+            (error) => {setActivities([{id: 1, name: "Error"}]);})}, [id]);
     return (
         <ul>
           {activity.map((data) => (
-            <li key={data.id}> 
+            <li data-testid="list" key={data.id}> 
               <p>{data.name}</p>
             </li>
           ))}
