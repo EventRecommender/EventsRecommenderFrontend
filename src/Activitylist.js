@@ -18,9 +18,9 @@ export default function Activitylist() {
     );};
     //This is the HTML code that displays the list.
     return (
-        <ul>
+        <ul data-testid="list">
           {activities.map((data, index) => (
-            <li data-testid="list" key={index}> 
+            <li key={index}> 
               <p>{data.name}</p>
               <button onClick={(event) => deleteActivity(event, data.id)}>Delete User</button>
             </li>

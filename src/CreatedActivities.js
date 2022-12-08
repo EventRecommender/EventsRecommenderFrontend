@@ -10,9 +10,9 @@ export default function CreatedActivities({id}) {
             (error) => {setActivities([{id: 1, name: "Error"}]);})}, [activities, id]);
 
             return (
-                <ul>
+                <ul data-testid="list">
             {activities.map((data) => (
-              <li data-testid="list" key={data.id}> 
+              <li key={data.id}> 
                 <p>{data.name}</p>
               </li>
             ))}

@@ -15,9 +15,9 @@ export default function Userlist() {
             .then((result) => {setUsers(result);}, 
             (error) => {setUsers([{id: 1, name: "Error"}]);})}, []);
     return (<>
-        <ul>
+        <ul data-testid="list" >
           {users.map((data, index) => (
-            <li data-testid="list" key={index}> 
+            <li key={index}> 
               <p>{data.name}</p>
               <button onClick={(event) => deleteUser(event, data.id)}>Delete User</button>
             </li>

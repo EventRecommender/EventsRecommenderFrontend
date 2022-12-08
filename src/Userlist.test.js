@@ -4,6 +4,6 @@ import React from 'react';
 
 test('Render List', () => {
   render(<Userlist />);
-  const listElement = screen.getAllByTestId('list');
+  const listElement = screen.getByTestId('list');
   expect(listElement).toBeInTheDocument();
 });
