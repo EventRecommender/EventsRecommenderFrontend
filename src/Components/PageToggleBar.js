@@ -1,9 +1,15 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import GlobalContext from '../Context/GlobalContext'
 
 export default function PageToggleBar() 
 {
-   const { setIsCalendar } = useContext(GlobalContext)
+   const { isCalendar, setIsCalendar } = useContext(GlobalContext)
+
+   // Debugging
+   useEffect(() =>
+    {
+      console.log(isCalendar)
+    }, [isCalendar])
 
    return (
     <div className='flex items-center'>
