@@ -77,17 +77,12 @@ class Login extends React.Component {
         event.preventDefault();
     }
 
-    //The logout button that is rendered.
-    Logout() {
-    return <button onClick={this.handleLogout}>Logout</button>;
-    };
-
     //The function that renders everything.
     render() {
         const Loggedin = this.state.Loggedin;
         let content;
-        let logoutButton = <button onClick={this.handleLogout}>Logout</button>
-        let backbutton = <button onClick={this.handleLogout}>Back</button>
+        let logoutButton = <button data-testid="LogoutButton" onClick={this.handleLogout}>Logout</button>
+        let backbutton = <button data-testid="BackButton" onClick={this.handleLogout}>Back</button>
         
         switch (Loggedin) {
             case "Student":
