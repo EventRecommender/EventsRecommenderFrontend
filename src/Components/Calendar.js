@@ -4,7 +4,6 @@ import CalendarHeader from './CalendarHeader';
 import Month from './Month';
 import getMonth from './util';
 import GlobalContext from '../Context/GlobalContext';
-import ActivityModel from './ActivityModel';
 
 export default function Calendar() 
 {
@@ -18,7 +17,6 @@ export default function Calendar()
 
    return (
       <React.Fragment>
-         {showActivityModel && <ActivityModel />}
          <div className='h-screen flex flex-col'>
             <CalendarHeader />
             <div className='flex flex-1'>

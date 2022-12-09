@@ -5,7 +5,7 @@ import CreateDummyEvents from './TestEvents'
 
 export default function RecommendedEvents({ }) 
 {
-  const [recommendedEvents, setRecommendedEvents] = useState(CreateDummyEvents(20)) // Events retrieved from service
+  const [recommendedEvents, setRecommendedEvents] = useState(CreateDummyEvents(20)) // Events retrieved from service (replace dummy data with fetched data from endpoint)
 
   return (
     <React.Fragment>

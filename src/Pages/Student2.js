@@ -11,7 +11,6 @@ export default function Student2()
 
 	return (
 		<React.Fragment>
-			<Topbar />
 			<div className='flex items-center'>
 				<button onClick={() => setIsCalendar(false)} className='border flex-1 hover:bg-gray-200 focus:outline-none'>
 					<header>Recommended Events</header>
