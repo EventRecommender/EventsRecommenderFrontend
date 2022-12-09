@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 
 test('Renders login button', () => {
   render(<Login />);
-  const ButtonElement = screen.getByDisplayValue("Login");
+  const ButtonElement = screen.getByDisplayValue("Sign in");
   expect(ButtonElement).toBeInTheDocument();
 });
 
@@ -26,7 +26,7 @@ test('Render Logout button', () => {
   const InputElement = screen.getByDisplayValue("username");
   InputElement.setSelectionRange(0, 8);
   userEvent.type(InputElement, '{backspace}Student');
-  userEvent.click(screen.getByDisplayValue("Login"));
+  userEvent.click(screen.getByDisplayValue("Sign in"));
 
   const ButtonElement = screen.getByTestId("LogoutButton");
   expect(ButtonElement).toBeInTheDocument();
@@ -50,7 +50,7 @@ test('Navigating to Student page', () => {
   const InputElement = screen.getByDisplayValue("username");
   InputElement.setSelectionRange(0, 8);
   userEvent.type(InputElement, '{backspace}Student');
-  userEvent.click(screen.getByDisplayValue("Login"));
+  userEvent.click(screen.getByDisplayValue("Sign in"));
 
   const ButtonElement = screen.getByTestId('ButtonGroupS');
   expect(ButtonElement).toBeInTheDocument();
@@ -61,7 +61,7 @@ test('Navigating to Organization page', () => {
   const InputElement = screen.getByDisplayValue("username");
   InputElement.setSelectionRange(0, 8);
   userEvent.type(InputElement, '{backspace}Org');
-  userEvent.click(screen.getByDisplayValue("Login"));
+  userEvent.click(screen.getByDisplayValue("Sign in"));
 
   const ButtonElement = screen.getByTestId('ButtonGroupO');
   expect(ButtonElement).toBeInTheDocument();
@@ -72,7 +72,7 @@ test('Navigating to Admin page', () => {
   const InputElement = screen.getByDisplayValue("username");
   InputElement.setSelectionRange(0, 8);
   userEvent.type(InputElement, '{backspace}Admin');
-  userEvent.click(screen.getByDisplayValue("Login"));
+  userEvent.click(screen.getByDisplayValue("Sign in"));
 
   const ButtonElement = screen.getByTestId('ButtonGroupA');
   expect(ButtonElement).toBeInTheDocument();

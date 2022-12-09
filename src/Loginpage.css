@@ -5,7 +5,7 @@
 }
 
 .useButton {
-    background-color: rgb(128, 196, 241);
+    background-color: black;
     color: white;
     font-size: 20px;
     padding: 10px 60px;
@@ -17,7 +17,7 @@
 }
 
 .LoginButton {
-    background-color: rgb(128, 196, 241);
+    background-color: black;
     color: white;
     font-size: 20px;
     padding: 10px 60px;

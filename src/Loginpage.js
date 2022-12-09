@@ -5,7 +5,6 @@ import Organizer from "./Organizer";
 import Admin from "./Admin";
 import CreateUser from "./CreateUser";
 import './Loginpage.css';
-import './Student.css';
 
 class Login extends React.Component {
     constructor(props) {
