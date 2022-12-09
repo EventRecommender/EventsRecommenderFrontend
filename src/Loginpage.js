@@ -11,8 +11,8 @@ class Login extends React.Component {
         super(props);
         //State variables.
         this.state = {
-                    Username: "username",
-                    Password: "password",
+                    Username: "",
+                    Password: "",
                     Loggedin: "Not",
                     Verify: ""
                     };       
