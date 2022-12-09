@@ -1,5 +1,6 @@
 import React from "react";
 import Student from "./Student";
+import Student2 from "./Pages/Student2";
 import Organizer from "./Organizer";
 import Admin from "./Admin";
 import CreateUser from "./CreateUser";
@@ -82,7 +83,7 @@ class Login extends React.Component {
         
         switch (Loggedin) {
             case "Student":
-                content = (<>{logoutButton}<Student id = {1}/></>);
+                content = (<>{logoutButton}<Student2/></>);
                 break;
 
             case "Org": 
