@@ -3,11 +3,6 @@ import dayjs from 'dayjs';
 
 import GlobalContext from '../Context/GlobalContext';
 
-const christmasEvents = 
-[
-  {}
-]
-
 export default function Day({ day, rowIdx }) 
 {
   const [dayActivities, setDayActivities] = useState([]);
@@ -15,8 +10,8 @@ export default function Day({ day, rowIdx })
 
   useEffect(() =>
   {
-    //const activities = storedActivities.filter(activity => dayjs(activity.day).format('DD-MM-YY') === day.format('DD-MM-YY')); // Find and filter dates that occur on a specific day
-    //setDayActivities(dayActivities);
+    const activities = storedActivities.filter((activity) => dayjs(activity.day).format('DD-MM-YY') === day.format('DD-MM-YY')); // Find and filter dates that occur on a specific day
+    setDayActivities(dayActivities);
   }, [storedActivities, day]);
 
   function highlightCurrentDate()

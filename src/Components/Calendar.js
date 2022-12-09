@@ -4,12 +4,13 @@ import CalendarHeader from './CalendarHeader';
 import Month from './Month';
 import getMonth from './util';
 import GlobalContext from '../Context/GlobalContext';
+import CreateDummyEvents from './TestEvents';
 
 export default function Calendar() 
 {
    const [currentMonth, setCurrentMonth] = useState(getMonth())
    const { monthIndex, showActivityModel } = useContext(GlobalContext)
-
+   
    useEffect(() =>
    {
       setCurrentMonth(getMonth(monthIndex))

@@ -18,24 +18,24 @@ function storedActivitiesReducer(state, { type, payload })
     }
 }
 
-function initActivities()
+function fetchRecommendedActivities()
 {
-    const storedActivities = localStorage.setItem('activities', createDummyEvents());
-    //const parsedActivities = storedActivities ? JSON.parse(storedActivities) : [] 
-    //return parsedActivities;
-    return storedActivities;
+    // const storedActivities = localStorage.getItem('storedActivities');
+    // const parsedActivities = storedActivities ? JSON.parse(storedActivities) : [] 
+    // return parsedActivities;
+    return createDummyEvents(10);
 }
 
 export default function ContextWrapper(props)
 {
     const [monthIndex, setMonthIndex] = useState(dayjs().month());
     const [showActivityModel, setShowActivityModel] = useState(null);
-    const [storedActivities, dispatchCalActivity] = useReducer(storedActivitiesReducer, [], createDummyEvents);
-
+    const [storedActivities, dispatchCalActivity] = useReducer(storedActivitiesReducer, [], fetchRecommendedActivities);
+    
     useEffect(() =>
     {
         localStorage.setItem('storedActivities', JSON.stringify(storedActivities));
-        console.log(createDummyEvents())
+
     }, [storedActivities]);
 
     return (
