@@ -10,11 +10,13 @@ class CreateActivity extends React.Component{
             City: "",
             Date: "",
             Image: "",
-            Description: ""
+            Description: "",
+            Tag: 'Food'
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
     };
 
     handleChange(event) {
@@ -25,6 +27,10 @@ class CreateActivity extends React.Component{
         this.setState({[name]: value});
     };
 
+    handleSelect(event) {
+        this.setState({value: event.target.Tag});
+    }
+
     handleSubmit(event) {
         alert("You created activity");
         let activityinfo = JSON.stringify({'title':this.state.Title, 
@@ -32,7 +38,8 @@ class CreateActivity extends React.Component{
         'city':this.state.City,
         'date':this.state.Date,
         'image':this.state.Image,
-        'description':this.state.Description});
+        'description':this.state.Description,
+        'tag':this.state.Tag});
 
         fetch('', {method: 'POST', body: activityinfo}).then((response) => response.json())
         .then((result) => {
@@ -74,6 +81,13 @@ class CreateActivity extends React.Component{
                 <label>Description:
                 <br/>
                 <input name="Description" type="textarea" value={this.state.Description} onChange={this.handleChange}/>
+                </label>
+                <br/>
+                <label>Tag:
+                <select value={this.state.Tag} onChange={this.handleSelect}>
+                    <option value="Bar">Bar</option>
+                    <option value="Food">Food</option>
+                </select>
                 </label>
                 <br/>
                 <input type="submit" value="Create New Activity"/>

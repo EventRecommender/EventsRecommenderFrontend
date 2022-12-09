@@ -8,16 +8,23 @@ class CreateUser extends React.Component {
             Password: "",
             City: "",
             Institute: "",
-            Role: 'Student'
+            Role: 'Student',
+            Tag: 'Food'
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleSelect = this.handleSelect.bind(this);
+        this.handleRole = this.handleRole.bind(this);
+        this.handleTag = this.handleTag.bind(this);
     };
 
     handleSubmit(event) {
         alert("You created user");
-        let userinfo = JSON.stringify({'username':this.state.Username, 'password':this.state.Password,'city':this.state.City,'institue':this.state.Institute,'role':this.state.Role});
+        let userinfo = JSON.stringify({'username':this.state.Username, 
+        'password':this.state.Password,
+        'city':this.state.City,
+        'institue':this.state.Institute,
+        'role':this.state.Role,
+        'tag':this.state.tag});
 
         fetch('', {method: 'POST', body: userinfo}).then((response) => response.json())
         .then((result) => {
@@ -37,8 +44,12 @@ class CreateUser extends React.Component {
         this.setState({[name]: value});
     };
 
-    handleSelect(event) {
-        this.setState({value: event.target.Role});
+    handleRole(event) {
+        this.setState({Role: event.target.Role});
+    }
+
+    handleTag(event) {
+        this.setState({Tag: event.target.Tag});
     }
 
     render(){
@@ -61,9 +72,16 @@ class CreateUser extends React.Component {
                 </label>
                 <br/>
                 <label>Role:
-                <select value={this.state.Role} onChange={this.handleSelect}>
+                <select value={this.state.Role} onChange={this.handleRole}>
                     <option value="Student">Student</option>
                     <option value="Organization">Organization</option>
+                </select>
+                </label>
+                <br/>
+                <label>Tags:
+                <select value={this.state.Tag} onChange={this.handleTag}>
+                    <option value="Bar">Bar</option>
+                    <option value="Food">Food</option>
                 </select>
                 </label>
                 <br/>
