@@ -27,7 +27,7 @@ class CreateUser extends React.Component {
         'role':this.state.Role,
         'tag':this.state.tag});
 
-        fetch('/createUser', {method: 'POST', body: userinfo}).then((response) => response.json())
+        fetch('/createUser', {method: 'POST', body: userinfo}).then((response) => {if(response.ok){console.log("Success")}})
         .then((result) => {
           console.log('Success:', result);
         })
