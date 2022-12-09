@@ -8,3 +8,14 @@
     width: 20%;
     align-self: center;
 }
+
+.LogoutButton {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: 10px 60px;
+    border-radius: 5px;
+    margin: 5px 0px;
+    cursor: pointer;
+    float: right;
+}
