@@ -57,19 +57,19 @@ class CreateUser extends React.Component {
         return (<>
             <form className="center" onSubmit={this.handleSubmit}>
                 <label>Username: 
-                <input name="Username" type="text" value={this.state.Username} onChange={this.handleChange} required/>
+                <input className="input" name="Username" type="text" value={this.state.Username} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>Password:
-                <input name="Password" type="text" value={this.state.Password} onChange={this.handleChange} required/>
+                <input className="input" name="Password" type="text" value={this.state.Password} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>City:
-                <input name="City" type="text" value={this.state.City} onChange={this.handleChange} required/>
+                <input className="input" name="City" type="text" value={this.state.City} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>Institute:
-                <input name="Institute" type="text" value={this.state.Institute} onChange={this.handleChange}/>
+                <input className="input" name="Institute" type="text" value={this.state.Institute} onChange={this.handleChange}/>
                 </label>
                 <br/>
                 <label>Role:
@@ -86,7 +86,7 @@ class CreateUser extends React.Component {
                 </select>
                 </label>
                 <br/>
-                <input type="submit" value="Create New User"/>
+                <input className="input" type="submit" value="Create New User"/>
             </form>
         </>)
     };

@@ -40,3 +40,8 @@
     cursor: pointer;
     float: right;
 }
+
+.input {
+    border-width: 1px;
+    border-color: black;
+}

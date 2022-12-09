@@ -1,4 +1,5 @@
 import React from "react";
+import './CreateUser.css';
 
 class CreateActivity extends React.Component{
     constructor(props){
@@ -53,34 +54,34 @@ class CreateActivity extends React.Component{
 
     render() {
         return(<>
-            <form onSubmit={this.handleSubmit}>
+            <form className="center" onSubmit={this.handleSubmit}>
                 <label>Title: 
-                <input name="Title" type="text" value={this.state.Title} onChange={this.handleChange} required/>
+                <input className="input" name="Title" type="text" value={this.state.Title} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>Host:
-                <input name="Host" type="text" value={this.state.Host} onChange={this.handleChange} required/>
+                <input className="input" name="Host" type="text" value={this.state.Host} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>City:
-                <input name="City" type="text" value={this.state.City} onChange={this.handleChange} required/>
+                <input className="input" name="City" type="text" value={this.state.City} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>Date:
-                <input name="Date" type="datetime-local" value={this.state.Date} onChange={this.handleChange} required/>
+                <input className="input" name="Date" type="datetime-local" value={this.state.Date} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>Image:
-                <input name="Image" type="url" value={this.state.Image} onChange={this.handleChange}/>
+                <input className="input" name="Image" type="url" value={this.state.Image} onChange={this.handleChange}/>
                 </label>
                 <br/>
                 <label>URL:
-                <input name="URL" type="url" value={this.state.URL} onChange={this.handleChange}/>
+                <input className="input" name="URL" type="url" value={this.state.URL} onChange={this.handleChange}/>
                 </label>
                 <br/>
                 <label>Description:
                 <br/>
-                <input name="Description" type="textarea" value={this.state.Description} onChange={this.handleChange}/>
+                <input className="input" name="Description" type="textarea" value={this.state.Description} onChange={this.handleChange}/>
                 </label>
                 <br/>
                 <label>Tag:
