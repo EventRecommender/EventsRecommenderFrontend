@@ -9,8 +9,8 @@ class CreateUser extends React.Component {
             Password: "",
             City: "",
             Institute: "",
-            Role: 'Student',
-            Tag: 'Food'
+            Role: "Student",
+            Tag: "Food"
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -23,7 +23,7 @@ class CreateUser extends React.Component {
         let userinfo = JSON.stringify({'username':this.state.Username, 
         'password':this.state.Password,
         'city':this.state.City,
-        'institue':this.state.Institute,
+        'institute':this.state.Institute,
         'role':this.state.Role,
         'tag':this.state.tag});
 
