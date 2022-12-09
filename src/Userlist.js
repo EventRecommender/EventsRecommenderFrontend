@@ -5,7 +5,7 @@ export default function Userlist() {
     
     function deleteUser(event, id){
       event.preventDefault();
-      fetch('', {method: 'POST', body: id}).then(res => res.json())
+      fetch('/fetchAllUsers', {method: 'POST', body: id}).then(res => res.json())
       .then((result) => {alert("Success");},
       (error) => {alert("Failed to delete user " + id); setUsers([{id: 2, name: "ERROR ERROR"}])}
       );};

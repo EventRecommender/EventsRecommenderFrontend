@@ -46,15 +46,15 @@ class Login extends React.Component {
 
         );
 
-        if(this.state.Username === "Student"){
+        if(this.state.Username === "Student" || this.state.Verify === "Student"){
             this.setState({Loggedin: "Student"});
         };
 
-        if(this.state.Username === "Org"){
+        if(this.state.Username === "Org" || this.state.Verify === "Student"){
             this.setState({Loggedin: "Org"});
         };
 
-        if(this.state.Username === "Admin"){
+        if(this.state.Username === "Admin" || this.state.Verify === "Student"){
             this.setState({Loggedin: "Admin"});
         };
 
