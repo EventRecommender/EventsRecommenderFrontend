@@ -40,13 +40,11 @@ class Login extends React.Component {
         fetch('', loginData)
 
         .then(res => res.json()).then((result) => {this.setState({Verify: result.items});
-    
+        alert(this.state.Verify)
         },
         (error) => {alert(JSON.stringify(error))}
 
         );
-        
-        alert("Your favorite name is: " + this.state.Verify);
 
         if(this.state.Username === "Student"){
             this.setState({Loggedin: "Student"});
@@ -79,7 +77,7 @@ class Login extends React.Component {
     render() {
         const Loggedin = this.state.Loggedin;
         let content;
-        let logoutButton = <button data-testid="LogoutButton" onClick={this.handleLogout}>Logout</button>
+        let logoutButton = <button className="LogoutButton"data-testid="LogoutButton" onClick={this.handleLogout}>Logout</button>
         let backbutton = <button data-testid="BackButton" onClick={this.handleLogout}>Back</button>
         
         switch (Loggedin) {
