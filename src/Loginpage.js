@@ -108,13 +108,13 @@ class Login extends React.Component {
                                 </label>
                             <br />
                                 <label>Password: 
-                                    <input className="center" name="Password" type="text" value={this.state.Password} onChange={this.handleChange}/>
+                                    <input name="Password" type="text" value={this.state.Password} onChange={this.handleChange}/>
                                 </label>
                             <br />
-                                <input className="useButton" type="submit" value="Login"/>
+                                <input className="LoginButton" type="submit" value="Sign in"/>
                             <br />
                         </form>
-                        <button data-testid="UserCreate" className="useButton" onClick={this.handleCreateUser}>Create new user</button>
+                        <button data-testid="UserCreate" className="useButton" onClick={this.handleCreateUser}>Sign up</button>
                         <br />
                     </div>        
                 </>);

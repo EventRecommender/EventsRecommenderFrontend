@@ -1,4 +1,5 @@
 import React from "react";
+import './CreateUser.css';
 
 class CreateUser extends React.Component {
     constructor(props) {
@@ -54,7 +55,7 @@ class CreateUser extends React.Component {
 
     render(){
         return (<>
-            <form onSubmit={this.handleSubmit}>
+            <form className="center" onSubmit={this.handleSubmit}>
                 <label>Username: 
                 <input name="Username" type="text" value={this.state.Username} onChange={this.handleChange} required/>
                 </label>
