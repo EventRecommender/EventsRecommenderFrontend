@@ -43,3 +43,9 @@ test('Render Input Element Description', () => {
     const InputElement = screen.getByLabelText("Description:");
     expect(InputElement).toBeInTheDocument();
 });
+
+test('Render Input Element Tag', () => {
+    render(<CreateActivity />);
+    const InputElement = screen.getByLabelText("Tag:");
+    expect(InputElement).toBeInTheDocument();
+});

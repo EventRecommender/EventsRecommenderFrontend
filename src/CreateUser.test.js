@@ -31,3 +31,9 @@ test('Render Input Element Role', () => {
     const InputElement = screen.getByLabelText("Role:");
     expect(InputElement).toBeInTheDocument();
 });
+
+test('Render Input Element Tags', () => {
+    render(<CreateUser />);
+    const InputElement = screen.getByLabelText("Tags:");
+    expect(InputElement).toBeInTheDocument();
+});

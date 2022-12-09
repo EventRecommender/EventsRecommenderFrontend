@@ -44,3 +44,36 @@ test('Render BackButton', () => {
   const ButtonElement = screen.getByTestId("BackButton");
   expect(ButtonElement).toBeInTheDocument();
 });
+
+test('Navigating to Student page', () => {
+  render(<Login />);
+  const InputElement = screen.getByDisplayValue("username");
+  InputElement.setSelectionRange(0, 8);
+  userEvent.type(InputElement, '{backspace}Student');
+  userEvent.click(screen.getByDisplayValue("Login"));
+
+  const ButtonElement = screen.getByTestId('ButtonGroupS');
+  expect(ButtonElement).toBeInTheDocument();
+});
+
+test('Navigating to Organization page', () => {
+  render(<Login />);
+  const InputElement = screen.getByDisplayValue("username");
+  InputElement.setSelectionRange(0, 8);
+  userEvent.type(InputElement, '{backspace}Org');
+  userEvent.click(screen.getByDisplayValue("Login"));
+
+  const ButtonElement = screen.getByTestId('ButtonGroupO');
+  expect(ButtonElement).toBeInTheDocument();
+});
+
+test('Navigating to Admin page', () => {
+  render(<Login />);
+  const InputElement = screen.getByDisplayValue("username");
+  InputElement.setSelectionRange(0, 8);
+  userEvent.type(InputElement, '{backspace}Admin');
+  userEvent.click(screen.getByDisplayValue("Login"));
+
+  const ButtonElement = screen.getByTestId('ButtonGroupA');
+  expect(ButtonElement).toBeInTheDocument();
+});
