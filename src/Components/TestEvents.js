@@ -30,11 +30,11 @@ const testType =
     "Bajer"
 ]
 
-export default function TestEvents()
+export default function CreateDummyEvents(count)
 {
     let result = []
 
-    for (let i = 0; i < 10; i++)
+    for (let i = 0; i < count; i++)
     {
         let event = {img: testImg, 
                     title: testTitles[Math.floor(Math.random() * testTitles.length)],
