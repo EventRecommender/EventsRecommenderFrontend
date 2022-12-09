@@ -39,7 +39,7 @@ class Login extends React.Component {
         //This is the part that makes a request to the backend.
         fetch('/login', loginData)
 
-        .then(res => res.json()).then((result) => {this.setState({Verify: result.items});
+        .then(res => res.json()).then((result) => {this.setState({Verify: result.role});
         alert(this.state.Verify)
         },
         (error) => {alert(JSON.stringify(error))}
