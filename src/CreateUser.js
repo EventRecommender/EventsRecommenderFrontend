@@ -19,7 +19,7 @@ class CreateUser extends React.Component {
     };
 
     handleSubmit(event) {
-        alert("You created user");
+
         let userinfo = JSON.stringify({'username':this.state.Username, 
         'password':this.state.Password,
         'city':this.state.City,
