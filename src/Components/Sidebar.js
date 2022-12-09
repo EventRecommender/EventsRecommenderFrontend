@@ -5,7 +5,7 @@ export default function Sidebar()
 {
   return (
     <aside className='border p-5'>
-      <CreateActivityButton/>
+      <CreateActivityButton />
     </aside>
   )
 }

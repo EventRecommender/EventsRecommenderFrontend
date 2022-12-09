@@ -2,11 +2,11 @@ import React, { useState, useReducer, useEffect } from 'react';
 import dayjs from 'dayjs';
 import GlobalContext from './GlobalContext';
 
-function savedActivitiesReducer(state, {type, payload})
+function savedActivitiesReducer(state, { type, payload })
 {
     switch (type)
     {
-        case 'push': 
+        case 'push':
             return [...state, payload];
         case 'update':
             return state.map(activity => activity.id === payload.id ? payload : activity)
@@ -19,7 +19,7 @@ function savedActivitiesReducer(state, {type, payload})
 
 function initActivities()
 {
-    const storedActivities = localStorage.getItem('savedActivities'); 
+    const storedActivities = localStorage.getItem('savedActivities');
     //const parsedActivities = storedActivities ? JSON.parse(storedActivities) : [] 
 }
 
@@ -37,15 +37,15 @@ export default function ContextWrapper(props)
 
     return (
         <GlobalContext.Provider value=
-        {{
-            monthIndex, 
-            setMonthIndex,
-            showActivityModel,
-            setShowActivityModel,
-            isCalendar,
-            setIsCalendar,
-            dispatchCalActivity
-        }}>
+            {{
+                monthIndex,
+                setMonthIndex,
+                showActivityModel,
+                setShowActivityModel,
+                isCalendar,
+                setIsCalendar,
+                dispatchCalActivity
+            }}>
             {props.children}
         </GlobalContext.Provider>
     )

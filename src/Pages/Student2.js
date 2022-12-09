@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+
 import Calendar from '../Components/Calendar';
-import PageToggleBar from '../Components/PageToggleBar';
 import RecommendedEvents from '../Components/RecommendedEvents';
 import Topbar from '../Components/Topbar';
 import ContextWrapper from '../Context/ContextWrapper';
@@ -21,7 +21,7 @@ export default function Student2()
 				</button>
 			</div>
 			<ContextWrapper>
-			{isCalendar ? <Calendar/> : <RecommendedEvents/>}
+				{isCalendar ? <Calendar /> : <RecommendedEvents />}
 			</ContextWrapper>
 		</React.Fragment>
 	)

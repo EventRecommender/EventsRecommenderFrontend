@@ -7,16 +7,16 @@ export default function Topbar()
 {
 	const [username, setUserName] = useState('Username');
 
-   return (
+	return (
 		<Navbar bg="light" expand="lg">
 			<Container>
 				<Navbar.Brand href="/">Logo</Navbar.Brand>
-            <Nav>
-               <Nav.Link href='/user'>
-                  <img src={userLogo} alt='user.svg'></img>
-               </Nav.Link>
-            </Nav>
-				
+				<Nav>
+					<Nav.Link href='/user'>
+						<img src={userLogo} alt='user.svg'></img>
+					</Nav.Link>
+				</Nav>
+
 			</Container>
 		</Navbar>
 	);

@@ -2,14 +2,14 @@ import React from 'react';
 
 const GlobalContext = React.createContext({
     monthIndex: 0,
-    setMonthIndex: (index) => {},
+    setMonthIndex: (index) => { },
     showActivityModel: false,
-    setShowActivityModel: () => {},
+    setShowActivityModel: () => { },
     displayCalendar: true,
-    setDisplayCalendar: () => {},
+    setDisplayCalendar: () => { },
     isCalendar: true,
-    setIsCalendar: () => {},
-    dispatchCalActivity: ({type, payload}) => {},
+    setIsCalendar: () => { },
+    dispatchCalActivity: ({ type, payload }) => { },
     savedActivities: []
 });
 

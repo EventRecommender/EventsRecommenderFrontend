@@ -31,8 +31,7 @@ export default function Day({ day, rowIdx })
         </p>
       </header>
       <div className='flex-1 cursor-pointer'>
-        
       </div>
     </div>
-    )
+  )
 }

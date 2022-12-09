@@ -1,12 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react'
 
 import CalendarHeader from './CalendarHeader';
-import Sidebar from './Sidebar';
 import Month from './Month';
 import getMonth from './util';
 import GlobalContext from '../Context/GlobalContext';
 import ActivityModel from './ActivityModel';
-import PageToggleBar from './PageToggleBar';
 
 export default function Calendar() 
 {
