@@ -5,7 +5,7 @@ export default function Recommendedactivities({id}) {
     const [activities, setActivities] = useState([]);
     //Effect hook which fetches the recommended activities
     useEffect(() => {
-        fetch('' + new URLSearchParams({id: id})).then(res => res.json())
+        fetch('/getRecommendations' + new URLSearchParams({id: id})).then(res => res.json())
             .then((result) => {setActivities(result);}, 
             (error) => {setActivities([{id: 1, name: "Error"}]);})}, [id]);
 

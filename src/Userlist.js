@@ -11,7 +11,7 @@ export default function Userlist() {
       );};
 
     useEffect(() => {
-        fetch('').then(res => res.json())
+        fetch('/getUsers').then(res => res.json())
             .then((result) => {setUsers(result);}, 
             (error) => {setUsers([{id: 1, name: "Error"}]);})}, []);
     return (<>

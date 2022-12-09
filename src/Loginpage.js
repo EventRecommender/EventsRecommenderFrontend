@@ -37,7 +37,7 @@ class Login extends React.Component {
         let loginData = JSON.stringify({'username':this.state.Username, 'password':this.state.Password});
 
         //This is the part that makes a request to the backend.
-        fetch('', loginData)
+        fetch('/login', loginData)
 
         .then(res => res.json()).then((result) => {this.setState({Verify: result.items});
         alert(this.state.Verify)

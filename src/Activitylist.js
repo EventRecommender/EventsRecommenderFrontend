@@ -6,13 +6,13 @@ export default function Activitylist() {
 
     //This is the http request that fetches the activities to display.
     useEffect(() => {
-        fetch('').then(res => res.json())
+        fetch('/getIncomingActivities' + new URLSearchParams("6", "Aalborg")).then(res => res.json())
             .then((result) => {setActivities(result);}, 
             (error) => {setActivities([{id: 1, name: "Error"}]);})}, []);
 
   function deleteActivity(event, id){
     event.preventDefault();
-    fetch('', {method: 'POST', body: id}).then(res => res.json())
+    fetch('/RemoveActivity', {method: 'POST', body: id}).then(res => res.json())
     .then((result) => {alert("Success");},
     (error) => {alert("Failed to delete user " + id); setActivities([{id: 2, name: "ERROR ERROR"}])}
     );};

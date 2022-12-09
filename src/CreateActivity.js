@@ -33,7 +33,6 @@ class CreateActivity extends React.Component{
     }
 
     handleSubmit(event) {
-        alert("You created activity");
         let activityinfo = JSON.stringify({'title':this.state.Title, 
         'host':this.state.Host,
         'city':this.state.City,
@@ -42,7 +41,7 @@ class CreateActivity extends React.Component{
         'description':this.state.Description,
         'tag':this.state.Tag});
 
-        fetch('', {method: 'POST', body: activityinfo}).then((response) => response.json())
+        fetch('/createActivity', {method: 'POST', body: activityinfo}).then((response) => response.json())
         .then((result) => {
           console.log('Success:', result);
         })
