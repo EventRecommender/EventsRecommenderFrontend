@@ -11,19 +11,19 @@ test('Renders login button', () => {
 
 test('Renders Username input', () => {
   render(<Login />);
-  const InputElement = screen.getByDisplayValue("username");
+  const InputElement = screen.getByTestId("Username");
   expect(InputElement).toBeInTheDocument();
 });
 
 test('Renders password input', () => {
   render(<Login />);
-  const InputElement = screen.getByDisplayValue("password");
+  const InputElement = screen.getByTestId("Password");
   expect(InputElement).toBeInTheDocument();
 });
 
 test('Render Logout button', () => {
   render(<Login />);
-  const InputElement = screen.getByDisplayValue("username");
+  const InputElement = screen.getByTestId("Username");
   InputElement.setSelectionRange(0, 8);
   userEvent.type(InputElement, '{backspace}Student');
   userEvent.click(screen.getByDisplayValue("Sign in"));
@@ -47,7 +47,7 @@ test('Render BackButton', () => {
 
 test('Navigating to Student page', () => {
   render(<Login />);
-  const InputElement = screen.getByDisplayValue("username");
+  const InputElement = screen.getByTestId("Username");
   InputElement.setSelectionRange(0, 8);
   userEvent.type(InputElement, '{backspace}Student');
   userEvent.click(screen.getByDisplayValue("Sign in"));
@@ -58,7 +58,7 @@ test('Navigating to Student page', () => {
 
 test('Navigating to Organization page', () => {
   render(<Login />);
-  const InputElement = screen.getByDisplayValue("username");
+  const InputElement = screen.getByTestId("Username");
   InputElement.setSelectionRange(0, 8);
   userEvent.type(InputElement, '{backspace}Org');
   userEvent.click(screen.getByDisplayValue("Sign in"));
@@ -69,7 +69,7 @@ test('Navigating to Organization page', () => {
 
 test('Navigating to Admin page', () => {
   render(<Login />);
-  const InputElement = screen.getByDisplayValue("username");
+  const InputElement = screen.getByTestId("Username");
   InputElement.setSelectionRange(0, 8);
   userEvent.type(InputElement, '{backspace}Admin');
   userEvent.click(screen.getByDisplayValue("Sign in"));
