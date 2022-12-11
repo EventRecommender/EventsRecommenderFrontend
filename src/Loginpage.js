@@ -37,14 +37,22 @@ class Login extends React.Component {
         let loginData = JSON.stringify({'username':this.state.Username, 'password':this.state.Password});
 
         //This is the part that makes a request to the backend.
-        fetch('/login', loginData)
-
-        .then(res => res.json()).then((result) => {this.setState({Verify: result.role});
-        alert(this.state.Verify)
-        },
-        (error) => {alert(JSON.stringify(error))}
-
-        );
+        fetch('/login', {
+            method: 'POST',
+            body: loginData,
+            headers: {
+                'Content-Type' : "application/json"
+            }
+        }).then((response) => {
+            if (response.ok)
+            {
+                console.log("success");
+                response.json().then((content) =>{
+                    this.setState({Loggedin: content.role, User: content});
+                })
+            }
+            else console.log(response);
+        }).catch((error) => console.log(error));
 
         if(this.state.Username === "Student" || this.state.Verify === "Student"){
             this.setState({Loggedin: "Student"});
