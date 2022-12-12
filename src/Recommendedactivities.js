@@ -1,34 +1,29 @@
 import React, {useState, useEffect} from "react";
-import activity from "./Activity";
-
+//The recommendedactivities component.
 export default function Recommendedactivities({id}) {
 
-    const activity = fetchActivities();
     const [activities, setActivities] = useState([]);
-
+    //Effect hook which fetches the recommended activities
     useEffect(() => {
-        fetch('' + new URLSearchParams({id: id})).then(res => res.json())
+        fetch('/getRecommendations' + new URLSearchParams({id: id})).then(res => res.json())
             .then((result) => {setActivities(result);}, 
-            (error) => {alert("Error");})}, [id]);
+            (error) => {setActivities([{id: 1, name: "Error"}]);})}, [id]);
+
+    function likeActivity(event, id){
+      event.preventDefault();
+      fetch('/Like', {method: 'POST', body: id}).then(res => res.json())
+        .then((result) => {alert("Success");},
+        (error) => {alert("Failed to delete user " + id); setActivities([{id: 2, name: "ERROR ERROR"}])}
+      );};
+    //Renders the activity list
     return (
-        <ul>
-          {activity.map((data) => (
+        <ul data-testid="list">
+          {activities.map((data) => (
             <li key={data.id}> 
               <p>{data.name}</p>
+              <button onClick={(event) => likeActivity(event, data.id)}>Delete User</button>
             </li>
           ))}
         </ul>
       );
-};
-
-function fetchActivities(){
-
-    const eventlist = [];
-    let i = 0;
-    while(i < 2){
-        eventlist.push(activity(i, "Dolmere"));
-        i = i + 1;
-    }
-
-    return eventlist;
 };

@@ -1,0 +1,10 @@
+.center {
+    margin: auto;
+    float: center;
+    text-align: center;
+}
+
+.input {
+    border-width: 1px;
+    border-color: black;
+}

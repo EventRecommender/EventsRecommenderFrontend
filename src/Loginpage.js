@@ -5,15 +5,14 @@ import Organizer from "./Organizer";
 import Admin from "./Admin";
 import CreateUser from "./CreateUser";
 import './Loginpage.css';
-import './Student.css';
 
 class Login extends React.Component {
     constructor(props) {
         super(props);
         //State variables.
         this.state = {
-                    Username: "username",
-                    Password: "password",
+                    Username: "",
+                    Password: "",
                     Loggedin: "Not",
                     Verify: ""
                     };       
@@ -35,31 +34,35 @@ class Login extends React.Component {
 
     //The handleSubmit takes care of the submit action on the page.
     handleSubmit(event) {
-        let formData = new FormData();
-        formData.append('username', this.state.Username);
-        formData.append('password', this.state.Password);
+        let loginData = JSON.stringify({'username':this.state.Username, 'password':this.state.Password});
 
         //This is the part that makes a request to the backend.
-        fetch('', formData)
+        fetch('/login', {
+            method: 'POST',
+            body: loginData,
+            headers: {
+                'Content-Type' : "application/json"
+            }
+        }).then((response) => {
+            if (response.ok)
+            {
+                console.log("success");
+                response.json().then((content) =>{
+                    this.setState({Loggedin: content.role, User: content});
+                })
+            }
+            else console.log(response);
+        }).catch((error) => console.log(error));
 
-        .then(res => res.json()).then((result) => {this.setState({Verify: result.items});
-    
-        },
-        (error) => {alert(JSON.stringify(error))}
-
-        );
-        
-        alert("Your favorite name is: " + this.state.Verify);
-
-        if(this.state.Username === "Student"){
+        if(this.state.Username === "Student" || this.state.Verify === "Student"){
             this.setState({Loggedin: "Student"});
         };
 
-        if(this.state.Username === "Org"){
+        if(this.state.Username === "Org" || this.state.Verify === "Student"){
             this.setState({Loggedin: "Org"});
         };
 
-        if(this.state.Username === "Admin"){
+        if(this.state.Username === "Admin" || this.state.Verify === "Student"){
             this.setState({Loggedin: "Admin"});
         };
 
@@ -78,17 +81,12 @@ class Login extends React.Component {
         event.preventDefault();
     }
 
-    //The logout button that is rendered.
-    Logout() {
-    return <button onClick={this.handleLogout}>Logout</button>;
-    };
-
     //The function that renders everything.
     render() {
         const Loggedin = this.state.Loggedin;
         let content;
-        let logoutButton = <button onClick={this.handleLogout}>Logout</button>
-        let backbutton = <button onClick={this.handleLogout}>Back</button>
+        let logoutButton = <button className="LogoutButton"data-testid="LogoutButton" onClick={this.handleLogout}>Logout</button>
+        let backbutton = <button data-testid="BackButton" onClick={this.handleLogout}>Back</button>
         
         switch (Loggedin) {
             case "Student":
@@ -114,17 +112,17 @@ class Login extends React.Component {
                         <br/>
                             <form className="center" onSubmit={this.handleSubmit}>
                                 <label>Username: 
-                                    <input name="Username" type="text" value={this.state.Username} onChange={this.handleChange}/>
+                                    <input data-testid="Username" className="input" name="Username" type="text" value={this.state.Username} onChange={this.handleChange}/>
                                 </label>
                             <br />
                                 <label>Password: 
-                                    <input className="center" name="Password" type="text" value={this.state.Password} onChange={this.handleChange}/>
+                                    <input data-testid="Password"className="input" name="Password" type="text" value={this.state.Password} onChange={this.handleChange}/>
                                 </label>
                             <br />
-                                <input className="useButton" type="submit" value="Login"/>
+                                <input className="LoginButton" type="submit" value="Sign in"/>
                             <br />
                         </form>
-                        <button className="useButton" onClick={this.handleCreateUser}>Create new user</button>
+                        <button data-testid="UserCreate" className="useButton" onClick={this.handleCreateUser}>Sign up</button>
                         <br />
                     </div>        
                 </>);

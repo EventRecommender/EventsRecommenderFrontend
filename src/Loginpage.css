@@ -1,10 +1,47 @@
 .center {
+    margin: auto;
     float: center;
-    align-self: center;
-    align-content: center;
+    text-align: center;
 }
 
 .useButton {
-    width: 20%;
-    align-self: center;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: 10px 60px;
+    border-radius: 5px;
+    margin: 5px 0px;
+    cursor: pointer;
+    width: 15%;
+    float: center;
+}
+
+.LoginButton {
+    background-color: black;
+    color: black;
+    font-size: 20px;
+    padding: 10px 60px;
+    border-radius: 5px;
+    margin: 5px 0px;
+    cursor: pointer;
+    width: 15%;
+    float: center;
+    border-width: 1px;
+    border-bottom: black;
+}
+
+.LogoutButton {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: 10px 60px;
+    border-radius: 5px;
+    margin: 5px 0px;
+    cursor: pointer;
+    float: right;
+}
+
+.input {
+    border-width: 1px;
+    border-color: black;
 }

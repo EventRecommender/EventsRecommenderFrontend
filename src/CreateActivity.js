@@ -1,4 +1,5 @@
 import React from "react";
+import './CreateUser.css';
 
 class CreateActivity extends React.Component{
     constructor(props){
@@ -10,11 +11,13 @@ class CreateActivity extends React.Component{
             City: "",
             Date: "",
             Image: "",
-            Description: ""
+            Description: "",
+            Tag: 'Food'
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
     };
 
     handleChange(event) {
@@ -25,16 +28,20 @@ class CreateActivity extends React.Component{
         this.setState({[name]: value});
     };
 
+    handleSelect(event) {
+        this.setState({value: event.target.Tag});
+    }
+
     handleSubmit(event) {
-        alert("You created activity");
-        let formData = new FormData();
-        formData.append('title', this.state.Title);
-        formData.append('host', this.state.Host);
-        formData.append('city', this.state.City);
-        formData.append('date', this.state.Date);
-        formData.append('image', this.state.Image);
-        formData.append('description', this.state.Description);
-        fetch('', {method: 'POST', body: formData}).then((response) => response.json())
+        let activityinfo = JSON.stringify({'title':this.state.Title, 
+        'host':this.state.Host,
+        'city':this.state.City,
+        'date':this.state.Date,
+        'image':this.state.Image,
+        'description':this.state.Description,
+        'tag':this.state.Tag});
+
+        fetch('/createActivity', {method: 'POST', body: activityinfo}).then((response) => response.json())
         .then((result) => {
           console.log('Success:', result);
         })
@@ -46,34 +53,41 @@ class CreateActivity extends React.Component{
 
     render() {
         return(<>
-            <form onSubmit={this.handleSubmit}>
+            <form className="center" onSubmit={this.handleSubmit}>
                 <label>Title: 
-                <input name="Title" type="text" value={this.state.Title} onChange={this.handleChange} required/>
+                <input className="input" name="Title" type="text" value={this.state.Title} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>Host:
-                <input name="Host" type="text" value={this.state.Host} onChange={this.handleChange} required/>
+                <input className="input" name="Host" type="text" value={this.state.Host} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>City:
-                <input name="City" type="text" value={this.state.City} onChange={this.handleChange} required/>
+                <input className="input" name="City" type="text" value={this.state.City} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>Date:
-                <input name="Date" type="datetime-local" value={this.state.Date} onChange={this.handleChange} required/>
+                <input className="input" name="Date" type="datetime-local" value={this.state.Date} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>Image:
-                <input name="Image" type="url" value={this.state.Image} onChange={this.handleChange}/>
+                <input className="input" name="Image" type="url" value={this.state.Image} onChange={this.handleChange}/>
                 </label>
                 <br/>
                 <label>URL:
-                <input name="URL" type="url" value={this.state.URL} onChange={this.handleChange}/>
+                <input className="input" name="URL" type="url" value={this.state.URL} onChange={this.handleChange}/>
                 </label>
                 <br/>
                 <label>Description:
                 <br/>
-                <input name="Description" type="textarea" value={this.state.Description} onChange={this.handleChange}/>
+                <input className="input" name="Description" type="textarea" value={this.state.Description} onChange={this.handleChange}/>
+                </label>
+                <br/>
+                <label>Tag:
+                <select value={this.state.Tag} onChange={this.handleSelect}>
+                    <option value="Bar">Bar</option>
+                    <option value="Food">Food</option>
+                </select>
                 </label>
                 <br/>
                 <input type="submit" value="Create New Activity"/>
