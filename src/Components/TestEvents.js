@@ -55,6 +55,6 @@ export default function CreateDummyEvents(count)
         };
         result.push(event)
     }
-
+    console.log(result)
     return result;
 }

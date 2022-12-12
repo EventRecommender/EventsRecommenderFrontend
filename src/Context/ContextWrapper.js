@@ -1,12 +1,13 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import dayjs from 'dayjs';
 import GlobalContext from './GlobalContext';
+import createDummyEvents from '../Components/TestEvents';
 
-function savedActivitiesReducer(state, { type, payload })
+function storedActivitiesReducer(state, { type, payload })
 {
     switch (type)
     {
-        case 'push':
+        case 'add':
             return [...state, payload];
         case 'update':
             return state.map(activity => activity.id === payload.id ? payload : activity)
@@ -17,23 +18,25 @@ function savedActivitiesReducer(state, { type, payload })
     }
 }
 
-function initActivities()
+function fetchRecommendedActivities()
 {
-    const storedActivities = localStorage.getItem('savedActivities');
-    //const parsedActivities = storedActivities ? JSON.parse(storedActivities) : [] 
+    // const storedActivities = localStorage.getItem('storedActivities');
+    // const parsedActivities = storedActivities ? JSON.parse(storedActivities) : [] 
+    // return parsedActivities;
+    return createDummyEvents(10);
 }
 
 export default function ContextWrapper(props)
 {
     const [monthIndex, setMonthIndex] = useState(dayjs().month());
     const [showActivityModel, setShowActivityModel] = useState(null);
-    const [isCalendar, setIsCalendar] = useState("true");
-    const [savedActivities, dispatchCalActivity] = useReducer(savedActivitiesReducer, [], initActivities);
-
+    const [storedActivities, dispatchCalActivity] = useReducer(storedActivitiesReducer, [], fetchRecommendedActivities);
+    
     useEffect(() =>
     {
-        localStorage.setItem('savedActivities', JSON.stringify(savedActivities))
-    }, [savedActivities])
+        localStorage.setItem('storedActivities', JSON.stringify(storedActivities));
+
+    }, [storedActivities]);
 
     return (
         <GlobalContext.Provider value=
@@ -42,9 +45,8 @@ export default function ContextWrapper(props)
                 setMonthIndex,
                 showActivityModel,
                 setShowActivityModel,
-                isCalendar,
-                setIsCalendar,
-                dispatchCalActivity
+                dispatchCalActivity,
+                storedActivities,
             }}>
             {props.children}
         </GlobalContext.Provider>
