@@ -14,7 +14,7 @@ class Login extends React.Component {
                     Username: "",
                     Password: "",
                     Loggedin: "Not",
-                    Verify: ""
+                    Verify: "",
                     };       
         
         this.handleChange = this.handleChange.bind(this);
@@ -90,15 +90,16 @@ class Login extends React.Component {
         
         switch (Loggedin) {
             case "Student":
-                content = (<>{logoutButton}<Student2/></>);
+                console.log(this.state.User.id);
+                content = (<>{logoutButton}<Student2 id = {this.state.User.id}/></>);
                 break;
 
             case "Org": 
-                content = (<>{logoutButton}<Organizer id = {1}/></>);
+                content = (<>{logoutButton}<Organizer id = {this.state.User.id}/></>);
                 break;
 
             case "Admin":
-                content = (<>{logoutButton}<Admin id = {1}/></>);
+                content = (<>{logoutButton}<Admin id = {this.state.User.id}/></>);
                 break;
 
             case "NewUser":

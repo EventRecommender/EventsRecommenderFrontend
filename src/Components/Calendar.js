@@ -6,7 +6,7 @@ import getMonth from './util';
 import GlobalContext from '../Context/GlobalContext';
 import CreateDummyEvents from './TestEvents';
 
-export default function Calendar() 
+export default function Calendar({id}) 
 {
    const [currentMonth, setCurrentMonth] = useState(getMonth())
    const { monthIndex, showActivityModel } = useContext(GlobalContext)

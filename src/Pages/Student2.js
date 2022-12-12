@@ -5,7 +5,7 @@ import RecommendedEvents from '../Components/RecommendedEvents';
 import Topbar from '../Components/Topbar';
 import ContextWrapper from '../Context/ContextWrapper';
 
-export default function Student2()
+export default function Student2({id})
 {
 	const [isCalendar, setIsCalendar] = useState(true); // Display calendar by default upon load
 
@@ -20,9 +20,8 @@ export default function Student2()
 				</button>
 			</div>
 			<ContextWrapper>
-				{isCalendar ? <Calendar /> : <RecommendedEvents />}
+				{isCalendar ? <Calendar /> : <RecommendedEvents id = {id} />}
 			</ContextWrapper>
 		</React.Fragment>
 	)
-
 }
