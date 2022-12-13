@@ -10,7 +10,7 @@ class CreateUser extends React.Component {
             City: "",
             Institute: "",
             Role: "Student",
-            Tag: "Food"
+            Tag: "Show"
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -58,11 +58,11 @@ class CreateUser extends React.Component {
     };
 
     handleRole(event) {
-        this.setState({Role: event.target.Role});
+        this.setState({Role: event.target.value});
     }
 
     handleTag(event) {
-        this.setState({Tag: event.target.Tag});
+        this.setState({Tag: event.target.value});
     }
 
     render(){
@@ -91,10 +91,15 @@ class CreateUser extends React.Component {
                 </select>
                 </label>
                 <br/>
-                <label>Tags:
+                <label>Interested in:
                 <select value={this.state.Tag} onChange={this.handleTag}>
-                    <option value="Bar">Bar</option>
-                    <option value="Food">Food</option>
+                    <option value="Koncert">Koncert</option>
+                    <option value="Foredrag">Foredrag</option>
+                    <option value="Show">Show</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Musical">Musical</option>
+                    <option value="Opera">Opera</option>
+                    <option value="Ballet">Ballet</option>
                 </select>
                 </label>
                 <br/>

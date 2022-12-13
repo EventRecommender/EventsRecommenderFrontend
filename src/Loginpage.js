@@ -14,7 +14,10 @@ class Login extends React.Component {
                     Username: "",
                     Password: "",
                     Loggedin: "Not",
-                    Verify: ""
+                    Verify: "",
+                    User: null,
+                    Recommendations: [],
+                    IncommingActivities: []
                     };       
         
         this.handleChange = this.handleChange.bind(this);
@@ -32,6 +35,69 @@ class Login extends React.Component {
         this.setState({[name]: value});
     };
 
+    async getRecommendations(id){
+        let url = new URL('/getRecommendations', window.location.origin),
+            params = {userid:id}
+        Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))
+        
+        const response = await fetch(url);
+        if (response.ok){
+            const content = await response.json()
+            let result = []
+
+                    for (let act of content){
+                        let event = {
+                            key: act.id,
+                            img: act.img,
+                            title: act.title,
+                            place: act.place,
+                            host: act.host,
+                            date: act.date,
+                            type: act.type,
+                            url: act.url,
+                            description: act.description
+                        }
+                        console.log(event);
+                        result.push(event);
+                    }
+                    console.log(result);
+                    return result;
+        }
+        return []
+    }
+
+    async getIncommingActivities(monthsForward, area){
+        let url = new URL('/getIncommingActivities', window.location.origin),
+            params = {monthsForward:monthsForward, area:area }
+        Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))
+        
+        const response = await fetch(url);
+        if (response.ok){
+            const content = await response.json()
+            let result = []
+
+                    for (let act of content){
+                        let event = {
+                            key: act.id,
+                            img: act.img,
+                            title: act.title,
+                            place: act.place,
+                            host: act.host,
+                            date: act.date,
+                            type: act.type,
+                            url: act.url,
+                            description: act.description
+                        }
+                        console.log(event);
+                        result.push(event);
+                    }
+                    console.log(result);
+                    return result;
+        }
+        return []
+    }
+
+
     //The handleSubmit takes care of the submit action on the page.
     handleSubmit(event) {
         let loginData = JSON.stringify({'username':this.state.Username, 'password':this.state.Password});
@@ -47,8 +113,13 @@ class Login extends React.Component {
             if (response.ok)
             {
                 console.log("success");
-                response.json().then((content) =>{
-                    this.setState({Loggedin: content.role, User: content});
+                response.json().then(async (content) =>{
+                    this.getRecommendations(content.id).then(recommendations => {
+                        console.log(content,recommendations);
+                        this.getIncommingActivities(20,content.area).then(incommingActivities => {
+                            this.setState({Loggedin: content.role, User: content, Recommendations: recommendations, IncommingActivities: incommingActivities });
+                        })
+                    })  
                 })
             }
             else console.log(response);
@@ -59,7 +130,7 @@ class Login extends React.Component {
         };
 
         if(this.state.Username === "Org" || this.state.Verify === "Student"){
-            this.setState({Loggedin: "Org"});
+            this.setState({Loggedin: "Organization"});
         };
 
         if(this.state.Username === "Admin" || this.state.Verify === "Student"){
@@ -90,15 +161,19 @@ class Login extends React.Component {
         
         switch (Loggedin) {
             case "Student":
-                content = (<>{logoutButton}<Student2/></>);
+                content = (<>{logoutButton}<Student2 
+                                        id = {this.state.User.id}
+                                        recommandations = {this.state.Recommendations} 
+                                        incommingActivities = {this.state.IncommingActivities}
+                            /></>);
                 break;
 
-            case "Org": 
-                content = (<>{logoutButton}<Organizer id = {1}/></>);
+            case "Organization": 
+                content = (<>{logoutButton}<Organizer username = {this.state.User.username}/></>);
                 break;
 
             case "Admin":
-                content = (<>{logoutButton}<Admin id = {1}/></>);
+                content = (<>{logoutButton}<Admin token = {this.state.User.token} area = {this.state.User.area}/></>);
                 break;
 
             case "NewUser":
