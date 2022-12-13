@@ -3,20 +3,20 @@ import styled from "styled-components";
 import CreateActivity from "./CreateActivity";
 import CreatedActivities from "./CreatedActivities";
 
-export default function Organizer({id}) {
+export default function Organizer({username}) {
     const [active, setActive] = useState(types[0])
 
     let content;
 
     if(active === types[0]){
-        content = <CreatedActivities id = {id}/>
+        content = <CreatedActivities username = {username}/>
     }else if(active === types[1]){
-        content = <CreateActivity />;
+        content = <CreateActivity username = {username} />;
     };
     return (
       <>
       <div className="App-rightalign">
-        <h5>Username goes here</h5>
+        <h5>{username}</h5>
       </div>
       <div style={{ display: "block", padding: 30 }}>
         <h4>Logo goes here</h4>

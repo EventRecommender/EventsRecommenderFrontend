@@ -7,12 +7,12 @@ class CreateActivity extends React.Component{
 
         this.state = {
             Title: "",
-            Host: "",
+            Host: props.username,
             City: "",
             Date: "",
             Image: "",
             Description: "",
-            Tag: 'Food'
+            Tag: 'Show'
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,7 +29,7 @@ class CreateActivity extends React.Component{
     };
 
     handleSelect(event) {
-        this.setState({value: event.target.Tag});
+        this.setState({value: event.target.value});
     }
 
     handleSubmit(event) {
@@ -41,12 +41,15 @@ class CreateActivity extends React.Component{
         'description':this.state.Description,
         'tag':this.state.Tag});
 
-        fetch('/createActivity', {method: 'POST', body: activityinfo}).then((response) => response.json())
-        .then((result) => {
-          console.log('Success:', result);
+        fetch('/createActivity', {method: 'POST', body: activityinfo, headers: {'Content-Type': 'application/json',
+        }}).then((response) => {
+            if (response.ok){
+                alert("activity created");
+            }   
         })
         .catch((error) => {
           console.error('Error:', error);
+          alert("something went wrong");
         });
         event.preventDefault();
     };
@@ -56,10 +59,6 @@ class CreateActivity extends React.Component{
             <form className="center" onSubmit={this.handleSubmit}>
                 <label>Title: 
                 <input className="input" name="Title" type="text" value={this.state.Title} onChange={this.handleChange} required/>
-                </label>
-                <br/>
-                <label>Host:
-                <input className="input" name="Host" type="text" value={this.state.Host} onChange={this.handleChange} required/>
                 </label>
                 <br/>
                 <label>City:
@@ -85,8 +84,13 @@ class CreateActivity extends React.Component{
                 <br/>
                 <label>Tag:
                 <select value={this.state.Tag} onChange={this.handleSelect}>
-                    <option value="Bar">Bar</option>
-                    <option value="Food">Food</option>
+                    <option value="Koncert">Koncert</option>
+                    <option value="Foredrag">Foredrag</option>
+                    <option value="Show">Show</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Musical">Musical</option>
+                    <option value="Opera">Opera</option>
+                    <option value="Ballet">Ballet</option>
                 </select>
                 </label>
                 <br/>
