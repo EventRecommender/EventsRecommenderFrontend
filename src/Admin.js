@@ -5,7 +5,7 @@ import Activitylist from "./Activitylist";
 import './Admin.css';
 
 //This is the admin page component
-function Admin({id}) {
+function Admin({token, area}) {
 
     //This is the what controls the button states.
     const [active, setActive] = useState(types[0])
@@ -15,16 +15,16 @@ function Admin({id}) {
 
     //This if decides what to display, based on the button state.
     if(active === types[0]){
-        content = <Userlist/>
+        content = <Userlist token = {token}/>
     }else if(active === types[1]){
-        content = <Activitylist />;
+        content = <Activitylist area = {area} />;
     };
 
     //The html code of the admin component.
     return (
       <>
       <div className="App-rightalign">
-        <h5>Username goes here</h5>
+        <h5>Admin page</h5>
       </div>
       <div style={{ display: "block", padding: 30 }}>
         <h4>Logo goes here</h4>
