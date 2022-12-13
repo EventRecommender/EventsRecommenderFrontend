@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 import Calendar from '../Components/Calendar';
-import RecommendedEvents from '../Components/RecommendedEvents';
+import RecommendedEvents from '../Components/RecommendedEvents2';
 import Topbar from '../Components/Topbar';
 import ContextWrapper from '../Context/ContextWrapper';
 
-export default function Student2()
+export default function Student2({id,recommandations, incommingActivities})
 {
-	const [isCalendar, setIsCalendar] = useState(true); // Display calendar by default upon load
-
+	const [isCalendar, setIsCalendar] = useState(false); // Display calendar by default upon load
+	console.log(id, recommandations);
 	return (
 		<React.Fragment>
 			<div data-testid="ButtonGroupS" className='flex items-center'>
@@ -20,7 +20,7 @@ export default function Student2()
 				</button>
 			</div>
 			<ContextWrapper>
-				{isCalendar ? <Calendar /> : <RecommendedEvents />}
+				{isCalendar ? <Calendar incommingActivities = {incommingActivities} /> : <RecommendedEvents id = {id} recommandations = {recommandations} />}
 			</ContextWrapper>
 		</React.Fragment>
 	)
