@@ -24,5 +24,4 @@ export default function Student2({id,recommandations, incommingActivities})
 			</ContextWrapper>
 		</React.Fragment>
 	)
-
 }

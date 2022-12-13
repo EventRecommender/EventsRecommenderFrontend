@@ -6,7 +6,7 @@ import getMonth from './util';
 import GlobalContext from '../Context/GlobalContext';
 
 export default function Calendar({incommingActivities}) 
-{
+
    const [currentMonth, setCurrentMonth] = useState(getMonth())
    const { monthIndex, showActivityModel } = useContext(GlobalContext)
    
