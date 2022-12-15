@@ -181,6 +181,7 @@ export default function CreateUser2()
                     </div>
                     <div className="mt-6 flex flex-col items-center">
                         <button
+                            type='submit'
                             className="px-4 py-2 text-white duration-200 bg-green-400 rounded hover:bg-green-600 focus:bg-green-600 focus:outline-none"
                             onClick={(e) => handleSubmit(e.target.value)}>
                             Submit
