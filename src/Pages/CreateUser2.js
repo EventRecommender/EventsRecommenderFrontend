@@ -54,6 +54,7 @@ export default function CreateUser2()
 
     const handleSubmit = (event) => 
     {
+        
         let userinfo = JSON.stringify(
             {
                 Item1:
@@ -66,6 +67,8 @@ export default function CreateUser2()
                 },
                 Item2: [selectedTags]
             });
+        
+        console.log(userinfo)
 
         fetch('/createUser',
             {
@@ -74,7 +77,7 @@ export default function CreateUser2()
                 headers: {
                     'Content-Type': 'application/json',
                 }
-            }).then((response) => { if (response.ok) { console.log(response) } })
+            }).then((response) => { if (response.ok) {console.log(response) }})
             .then((result) =>
             {
                 console.log(`Created the user ${result}`);
@@ -179,7 +182,7 @@ export default function CreateUser2()
                     <div className="mt-6 flex flex-col items-center">
                         <button
                             className="px-4 py-2 text-white duration-200 bg-green-400 rounded hover:bg-green-600 focus:bg-green-600 focus:outline-none"
-                            onClick={() => handleSubmit('/home')}>
+                            onClick={() => handleSubmit('/')}>
                             Submit
                         </button>
                     </div>
