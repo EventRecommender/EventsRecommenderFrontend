@@ -1,21 +1,48 @@
-import React, { useContext, useState } from 'react'
-import { useNavigate  } from 'react-router-dom';
-
-import UserContext from '../Context/UserContext';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export default function Loginpage2()
 {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    //const [isLoggedIn, setIsLoggedIn] = useContext(UserContext);
-
     const handleNavigate = useNavigate();
 
     const handleUserLogin = (e) =>
     {
+        let loginData = JSON.stringify(
+            {
+                'username': username,
+                'password': password
+            });
+
+        // Returns ID, username, role, token, area
+        fetch('/login', {
+            method: 'POST',
+            body: loginData,
+            headers: {
+                'Content-Type': "application/json"
+            }
+        }).then((response) =>
+        {
+            if (response.ok)
+            {
+                response.json().then(async (content) =>
+                {
+                    this.getRecommendations(content.id).then(recommendations =>
+                    {
+                        
+                        this.getIncommingActivities(20, content.area).then(incommingActivities =>
+                        {
+                            this.setState({ Loggedin: content.role, User: content, Recommendations: recommendations, IncommingActivities: incommingActivities });
+                        })
+                    })
+                })
+            }
+            else console.log(response);
+        }).catch((error) => console.log(error));
+
         e.preventDefault();
-        console.log(`Object: ${username}, ${password}`)   
     }
 
     const handleCreateUser = (e) =>
@@ -28,7 +55,7 @@ export default function Loginpage2()
         <div className="relative flex flex-col justify-center pt-20">
             <div className="w-full p-4 m-auto rounded shadow lg:max-w-xl">
                 <h1 className="text-3xl font-semibold text-center">
-                   Login
+                    Login
                 </h1>
                 <form className="mt-6" onSubmit={handleUserLogin}>
                     <div className="mb-2">
@@ -59,8 +86,8 @@ export default function Loginpage2()
                     </div>
                     <div className="mt-6">
                         <button
-                        type='submit ' 
-                        className="w-full px-4 py-2 text-white duration-200 bg-gray-400 rounded hover:bg-gray-600 focus:bg-gray-600 focus:outline-none">
+                            type='submit '
+                            className="w-full px-4 py-2 text-white duration-200 bg-gray-400 rounded hover:bg-gray-600 focus:bg-gray-600 focus:outline-none">
                             Login
                         </button>
                     </div>
