@@ -87,7 +87,7 @@ export default function CreateUser2()
                 console.error('Error:', error);
             });
         handleNavigate('/');
-        event.preventDefault()
+        //event.preventDefault()
     }
 
     return (
@@ -183,7 +183,7 @@ export default function CreateUser2()
                         <button
                             type='submit'
                             className="px-4 py-2 text-white duration-200 bg-green-400 rounded hover:bg-green-600 focus:bg-green-600 focus:outline-none"
-                            onClick={(e) => handleSubmit(e.target.value)}>
+                            onClick={() => handleSubmit()}>
                             Submit
                         </button>
                     </div>
