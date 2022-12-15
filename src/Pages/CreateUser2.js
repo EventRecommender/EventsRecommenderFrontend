@@ -65,7 +65,7 @@ export default function CreateUser2()
                     'institute': institution,
                     'role': role,
                 },
-                Item2: [selectedTags]
+                Item2: selectedTags
             });
 
         console.log(userinfo)
