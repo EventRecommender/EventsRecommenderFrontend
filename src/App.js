@@ -8,7 +8,7 @@ export default function App()
 {
    const { auth, user, isLoggedIn, role } = useContext(AuthContext);
 
-   const [username, setUsername] = useState(user.username);
+   const [username, setUsername] = useState('');
 
    return (
       <React.Fragment>
