@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 
-import AuthContext from '../Context/AuthProvider';
+import AuthContext from './Context/AuthProvider';
 import Topbar from './Components/Topbar';
 import Main from './Components/Main';
 
