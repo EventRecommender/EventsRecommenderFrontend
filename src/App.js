@@ -8,11 +8,11 @@ export default function App()
 {
    const { auth, user, isLoggedIn, role } = useContext(AuthContext);
 
-   const [username, setUsername] = useState('');
+   const [username, setUsername] = useState('Not logged in');
 
    return (
       <React.Fragment>
-         <Topbar name={user.username} />
+         <Topbar name={username} />
          <Main />
          {/* <div>
                {
