@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 export default function Loginpage2()
 {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [role, setRole] = useState('');
 
+    const userRef = useRef();
+    const errRef = useRef();
     const handleNavigate = useNavigate();
 
     const handleUserLogin = (e) =>
@@ -29,14 +32,7 @@ export default function Loginpage2()
             {
                 response.json().then(async (content) =>
                 {
-                    this.getRecommendations(content.id).then(recommendations =>
-                    {
-                        
-                        this.getIncommingActivities(20, content.area).then(incommingActivities =>
-                        {
-                            this.setState({ Loggedin: content.role, User: content, Recommendations: recommendations, IncommingActivities: incommingActivities });
-                        })
-                    })
+                    console.log(JSON.stringify(content?.data))
                 })
             }
             else console.log(response);
@@ -68,6 +64,7 @@ export default function Loginpage2()
                             value={username}
                             id="username"
                             name='username'
+                            ref={userRef} 
                             onChange={(e) => setUsername(e.target.value)}
                         />
                     </div>
