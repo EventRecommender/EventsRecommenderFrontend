@@ -1,12 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
+
+import AuthContext from '../Context/AuthProvider';
 
 export default function Loginpage2()
 {
+    const [user, setUser] = useState(null);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('');
 
+    const { setAuth } = useContext(AuthContext);
     const userRef = useRef();
     const errRef = useRef();
     const handleNavigate = useNavigate();
@@ -30,9 +34,12 @@ export default function Loginpage2()
         {
             if (response.ok)
             {
+                console.log("success")
                 response.json().then(async (content) =>
                 {
                     console.log(JSON.stringify(content?.data))
+                    setRole(content.role);
+                    setUser(content.user)
                 })
             }
             else console.log(response);
