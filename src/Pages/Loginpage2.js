@@ -8,11 +8,16 @@ export default function Loginpage2()
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const { setAuth, setUser, setIsLoggedIn, setRole} = useContext(AuthContext);
+    const { setAuth, setUser, setIsLoggedIn, role, setRole} = useContext(AuthContext);
     
     const userRef = useRef();
     const errRef = useRef();
     const handleNavigate = useNavigate();
+
+    const handleUserData = (e) =>
+    {
+
+    }
 
     const handleUserLogin = (e) =>
     {
@@ -52,7 +57,10 @@ export default function Loginpage2()
         handleNavigate('create-user');
     }
 
-    
+    useEffect(() =>
+    {
+        console.log(`Role: ${role}`)
+    }, [role])
 
     return (
         <div className="relative flex flex-col justify-center pt-20">
