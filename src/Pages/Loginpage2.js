@@ -5,12 +5,11 @@ import AuthContext from '../Context/AuthProvider';
 
 export default function Loginpage2()
 {
-    const [user, setUser] = useState(null);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [role, setRole] = useState('');
 
-    const { setAuth } = useContext(AuthContext);
+    const { setAuth, setUser, setIsLoggedIn, setRole} = useContext(AuthContext);
+    
     const userRef = useRef();
     const errRef = useRef();
     const handleNavigate = useNavigate();
@@ -37,7 +36,6 @@ export default function Loginpage2()
                 console.log("success")
                 response.json().then(async (content) =>
                 {
-                    console.log(JSON.stringify(content?.data))
                     setRole(content.role);
                     setUser(content.user)
                 })
@@ -53,6 +51,8 @@ export default function Loginpage2()
         e.preventDefault();
         handleNavigate('create-user');
     }
+
+    
 
     return (
         <div className="relative flex flex-col justify-center pt-20">
