@@ -36,7 +36,7 @@ export default function Loginpage2()
                 response.json().then((content) =>
                 {
                     JWTService.setToken(content.token); // Sets user token in local storage
-                    
+                    handleNavigate('/', { replace: ture }); // Force navigation when token is stored
                 })
             }
             else console.log(response);
@@ -53,7 +53,7 @@ export default function Loginpage2()
 
     useEffect(() =>
     {
-
+        console.log(JWTService.getToken)
     }, [localStorage])
 
     return (
