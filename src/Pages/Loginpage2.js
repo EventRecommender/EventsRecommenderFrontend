@@ -39,11 +39,10 @@ export default function Loginpage2()
         {
             if (response.ok)
             {
-                console.log("success")
                 response.json().then((content) =>
                 {
-                    JWTService.setToken(content.token)
-                    console.log(JWTService.getDecodedToken(content.token))
+                    JWTService.setToken(content.token); // Sets token in local storage
+                    console.log(content);
                 })
             }
             else console.log(response);
