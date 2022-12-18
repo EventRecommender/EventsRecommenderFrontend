@@ -53,8 +53,8 @@ export default function Loginpage2()
 
     useEffect(() =>
     {
-        console.log(`Role: ${role}`)
-    }, [role])
+
+    }, [localStorage])
 
     return (
         <div className="relative flex flex-col justify-center pt-20">
