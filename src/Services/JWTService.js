@@ -2,7 +2,7 @@ import jwt_decode from 'jwt-decode';
 
 class JWTService
 {
-    GetToken()
+    getToken()
     {
         let token = localStorage.getItem('token');
         if (token === null) { return; }
@@ -10,7 +10,7 @@ class JWTService
         return token;
     }
 
-    GetDecodedToken()
+    getDecodedToken()
     {
         let token = localStorage.getItem('token');
         if (token === null) { return; }
@@ -18,12 +18,12 @@ class JWTService
         return jwt_decode(token);
     }
 
-    SetToken(newToken)
+    setToken(token)
     {
-        return localStorage.setItem("token", JSON.stringify(newToken));
+        return localStorage.setItem("token", JSON.stringify(token));
     }
 
-    DeleteToken()
+    deleteToken()
     {
         return localStorage.removeItem('token')
     }

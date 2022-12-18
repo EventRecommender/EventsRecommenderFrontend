@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import AuthContext from '../Context/AuthProvider';
+import JWTService from '../Services/JWTService';
 
 export default function Loginpage2()
 {
@@ -39,9 +40,10 @@ export default function Loginpage2()
             if (response.ok)
             {
                 console.log("success")
-                response.json().then(async (content) =>
+                response.json().then((content) =>
                 {
-                    console.log(content);
+                    JWTService.setToken(content.token)
+                    console.log(JWTService.getDecodedToken(content.token))
                 })
             }
             else console.log(response);
