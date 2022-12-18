@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-import Calendar from '../Components/Calendar';
-import RecommendedEvents from '../Components/RecommendedEvents2';
-import Topbar from '../Components/Topbar';
+import Calendar from '../Components/Student/Calendar';
+import RecommendedEvents from '../Components/Student/RecommendedEvents';
 import ContextWrapper from '../Context/ContextWrapper';
 
 // Add bigger fonts to button group

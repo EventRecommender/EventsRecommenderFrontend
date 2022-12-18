@@ -12,7 +12,7 @@ const tagsList =
         "Ballet"
     ]
 
-export default function CreateUser2()
+export default function CreateUser()
 {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -52,9 +52,8 @@ export default function CreateUser2()
         event.preventDefault();
     }
 
-    const handleSubmit = (event) => 
+    const handleSubmit = () => 
     {
-
         let userinfo = JSON.stringify(
             {
                 Item1:
@@ -68,8 +67,6 @@ export default function CreateUser2()
                 Item2: selectedTags
             });
 
-        console.log(userinfo)
-
         fetch('/createUser',
             {
                 method: 'POST',
@@ -78,16 +75,11 @@ export default function CreateUser2()
                     'Content-Type': 'application/json',
                 }
             }).then((response) => { if (response.ok) { console.log(response) } })
-            .then((result) =>
-            {
-                console.log(`Created the user ${result}`);
-            })
             .catch((error) =>
             {
                 console.error('Error:', error);
             });
         handleNavigate('/');
-        //event.preventDefault()
     }
 
     return (
@@ -185,7 +177,7 @@ export default function CreateUser2()
                         <button
                             type='submit'
                             className="px-4 py-2 text-white duration-200 bg-green-400 rounded hover:bg-green-600 focus:bg-green-600 focus:outline-none"
-                            >
+                        >
                             Submit
                         </button>
                     </div>

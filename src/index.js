@@ -1,16 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Login from './Pages/Loginpage2';
-import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import Student2 from './Pages/Student2';
+
+import OuterLayer from './Components/OuterLayer/OuterLayer';
+import AuthRouter from './Components/AuthRouter/AuthRouter';
+import AuthLayer from './Components/AuthLayer/AuthLayer';
+import Home from './Pages/Home';
+import Login from './Pages/Login';
+import CreateUser from './Pages/CreateUser';
+import NotFound from './Pages/NotFound';
+import { AuthProvider } from './Context/AuthProvider'; 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <BrowserRouter>
-    <App />
+    <Routes>
+      <Route element={<OuterLayer />} >
+        <Route element={<AuthRouter />}>
+          <Route element={<AuthLayer />}>
+            <Route element={<Home />} />
+          </Route>
+        </Route>
+        <Route path='/' element={<Login />} />
+        <Route path='/create-user' element={<CreateUser />} />
+        <Route path='*' element={<NotFound />} />
+      </Route>
+    </Routes>
   </BrowserRouter>
 );

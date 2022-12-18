@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 
-import GlobalContext from '../Context/GlobalContext';
+import GlobalContext from '../../Context/GlobalContext';
 
 export default function Day({ day, rowIdx, incommingActivities }) 
 {

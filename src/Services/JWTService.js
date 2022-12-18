@@ -1,5 +1,6 @@
 import jwt_decode from 'jwt-decode';
 
+// Foo
 class JWTService
 {
     getToken()
@@ -23,7 +24,7 @@ class JWTService
         return localStorage.setItem("token", JSON.stringify(token));
     }
 
-    deleteToken()
+    clearToken()
     {
         return localStorage.removeItem('token')
     }

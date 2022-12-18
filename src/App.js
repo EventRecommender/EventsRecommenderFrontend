@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 
 import AuthContext from './Context/AuthProvider';
-import Topbar from './Components/Topbar';
+import Topbar from './Components/OuterLayer/Topbar';
 import Main from './Components/Main';
 
 export default function App()

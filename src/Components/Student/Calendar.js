@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import CalendarHeader from './CalendarHeader';
 import Month from './Month';
 import getMonth from './util';
-import GlobalContext from '../Context/GlobalContext';
+import GlobalContext from '../../Context/GlobalContext';
 
 export default function Calendar({incommingActivities}){
 

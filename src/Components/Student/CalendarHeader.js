@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import dayjs from 'dayjs';
-import GlobalContext from '../Context/GlobalContext'
+import GlobalContext from '../../Context/GlobalContext';
 
 export default function CalendarHeader({ month }, { currentYear })
 {

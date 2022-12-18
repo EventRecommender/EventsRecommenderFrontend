@@ -1,6 +1,6 @@
 import React from "react";
 import Student from "./Student";
-import Student2 from "./Pages/Student2";
+import Student2 from "./Pages/Student";
 import Organizer from "./Organizer";
 import Admin from "./Admin";
 import CreateUser from "./CreateUser";

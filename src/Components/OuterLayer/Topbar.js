@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 
-import userLogo from '../Assets/Icons/user.svg';
-
-export default function Topbar({name}) 
+export default function Topbar() 
 {
-	const [username, setUserName] = useState(name);
+	const [username, setUserName] = useState("Not logged in");
 
 	return (
 		<Navbar bg="light" expand="lg">
@@ -15,7 +13,7 @@ export default function Topbar({name})
 					<Nav.Link 
 						href='/user'
 						className='flex'>
-						<h1>{name}</h1>
+						<h1>{username}</h1>
 					</Nav.Link>
 				</Nav>
 			</Container>
