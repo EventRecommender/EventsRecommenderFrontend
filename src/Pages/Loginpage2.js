@@ -41,8 +41,7 @@ export default function Loginpage2()
                 console.log("success")
                 response.json().then(async (content) =>
                 {
-                    setRole(content.role);
-                    setUser(content.user)
+                    console.log(content);
                 })
             }
             else console.log(response);
