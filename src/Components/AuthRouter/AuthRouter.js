@@ -16,7 +16,9 @@ export default function AuthRouter()
             return true;
     }
 
+    console.log(`isTokenValid: ${isTokenValid()}`)
+
     return (
-        isTokenValid() ? <Outlet /> : <Navigate to="/login" />
+        isTokenValid() ? <Outlet /> : <Navigate to="/" />
     );
 }

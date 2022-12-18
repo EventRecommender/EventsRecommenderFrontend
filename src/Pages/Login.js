@@ -11,14 +11,8 @@ export default function Loginpage2()
 
     const { setAuth, setUser, setIsLoggedIn, role, setRole} = useContext(AuthContext);
     
-    const userRef = useRef();
-    const errRef = useRef();
+    const userRef = useRef();    const errRef = useRef();
     const handleNavigate = useNavigate();
-
-    const handleUserData = (e) =>
-    {
-
-    }
 
     const handleUserLogin = (e) =>
     {
@@ -41,8 +35,8 @@ export default function Loginpage2()
             {
                 response.json().then((content) =>
                 {
-                    JWTService.setToken(content.token); // Sets token in local storage
-                    console.log(content);
+                    JWTService.setToken(content.token); // Sets user token in local storage
+                    
                 })
             }
             else console.log(response);
