@@ -9,7 +9,6 @@ export const AuthProvider = ({ children }) =>
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [role, setRole] = useState('');
     
-
     return (
         <AuthContext.Provider value={{user, setUser, isLoggedIn, setIsLoggedIn, role, setRole}}>
             {children}

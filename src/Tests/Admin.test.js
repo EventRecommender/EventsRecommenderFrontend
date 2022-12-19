@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Admin from './Admin';
+import Admin from '../Admin';
 import React from 'react';
 
 test('Render Buttongroup', () => {

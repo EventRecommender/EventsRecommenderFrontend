@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import CreateActivity from './CreateActivity';
+import CreateActivity from '../CreateActivity';
 import React from 'react';
 
 test('Render Input Element Title', () => {

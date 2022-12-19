@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Activitylist from './Activitylist';
+import Activitylist from '../Activitylist';
 import React from 'react';
 
 test('Render List', () => {

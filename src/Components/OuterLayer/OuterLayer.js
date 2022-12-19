@@ -7,7 +7,7 @@ export default function OuterLayer()
     return (
         <React.Fragment>
             <Topbar />
-            <Outlet />
+            <Outlet /> 
         </React.Fragment>
     )
 }
