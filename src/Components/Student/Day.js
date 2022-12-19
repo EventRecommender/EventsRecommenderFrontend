@@ -9,12 +9,11 @@ import StorageService from '../../Services/StorageService';
 export default function Day({ day, rowIdx}) 
 {
   const [activities, setActivities] = useState([]);
-
   // StorageService.getIncomingActivities().filter((activity) => dayjs(activity.date).format('DD/MM/YY') === day.format('DD/MM/YY')));
 
   useEffect(() =>
   {
-
+    setActivities(StorageService.getIncomingActivities().filter((activity) => dayjs(activity.date).format('DD/MM/YY') === day.format('DD/MM/YY')));
   }, [])
   
   
