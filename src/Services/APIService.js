@@ -31,6 +31,7 @@ class APIService
                 result.push(event);
             }
             localStorage.setItem('incomingActivities', JSON.stringify(result));
+            return;
         }
         localStorage.setItem('incomingActivities', JSON.stringify([]));
     }
@@ -64,6 +65,7 @@ class APIService
                 result.push(event);
             }
             localStorage.setItem('recommendations', JSON.stringify(result));
+            return;
         }
         localStorage.setItem('recommendations', JSON.stringify([]));
     }
