@@ -5,11 +5,12 @@ import Month from './Month';
 import getMonth from './util';
 import GlobalContext from '../../Context/GlobalContext';
 
-export default function Calendar({incommingActivities}){
-
+export default function Calendar()
+{
    const [currentMonth, setCurrentMonth] = useState(getMonth())
    const { monthIndex, showActivityModel } = useContext(GlobalContext)
-   
+   const [incomingActivities, setIncomingActivities] = useState()
+
    useEffect(() =>
    {
       setCurrentMonth(getMonth(monthIndex))
@@ -20,7 +21,7 @@ export default function Calendar({incommingActivities}){
          <div className='h-screen flex flex-col'>
             <CalendarHeader />
             <div className='flex flex-1'>
-               <Month month={currentMonth} incommingActivities = {incommingActivities} />
+               <Month month={currentMonth} incomingActivities = {incomingActivities} />
             </div>
          </div>
       </React.Fragment>
