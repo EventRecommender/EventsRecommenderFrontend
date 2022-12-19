@@ -11,12 +11,13 @@ export default function AuthRouter()
 
         let timeInSeconds = new Date().getTime() / 1000;
         if (decodedToken.exp < Math.round(timeInSeconds))
+        {    
+            JWTService.clearToken(); // Remove token from localStorage if expired
             return false;
-        else
-            return true;
+        }
+        
+        else {return true};
     }
-
-    console.log(`isTokenValid: ${isTokenValid()}`)
 
     return (
         isTokenValid() ? <Outlet /> : <Navigate to="/" />

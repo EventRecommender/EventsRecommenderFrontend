@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 
 import GlobalContext from '../../Context/GlobalContext';
+import APIService from '../../Services/APIService';
+import UserService from '../../Services/UserService';
 
-export default function Day({ day, rowIdx, incommingActivities }) 
+export default function Day({ day, rowIdx}) 
 {
-  const activities = incommingActivities.filter((activity) => dayjs(activity.date).format('DD/MM/YY') === day.format('DD/MM/YY'));
+  const activities = APIService.getIncomingActivities(20, UserService.getArea()).filter((activity) => dayjs(activity.date).format('DD/MM/YY') === day.format('DD/MM/YY'));
 
   function highlightCurrentDate()
   {

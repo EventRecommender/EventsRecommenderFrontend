@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react'
+import APIService from '../../Services/APIService'
+import UserService from '../../Services/UserService'
 
 import Activity from './Activity'
 //import GetEvents from './GetRecEvents'
 
-export default function RecommendedEvents({id,recommandations}) 
+export default function RecommendedEvents() 
 {
+  const [recommendations, setRecommendations] = useState(APIService.getRecommendations(20, UserService.getArea()));
+
   return ( 
       <React.Fragment> 
       <div className='flex-1 grid grid-cols-4 grid-rows-4 px-2 py-2 gap-2'>
         {
-          recommandations.map((event, key) =>
+          recommendations.map((event, key) =>
             <Activity
               key={event.key}
               date={event.date}
@@ -25,5 +29,3 @@ export default function RecommendedEvents({id,recommandations})
     </React.Fragment> 
   )
 }
-
-//: <header>You done goofed+</header>}

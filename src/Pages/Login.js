@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import AuthContext from '../Context/AuthProvider';
 import JWTService from '../Services/JWTService';
+import UserService from '../Services/UserService';
 
 export default function Loginpage2()
 {
@@ -36,7 +37,8 @@ export default function Loginpage2()
                 response.json().then((content) =>
                 {
                     JWTService.setToken(content.token); // Sets user token in local storage
-                    handleNavigate('/', { replace: true }); // Force navigation when token is stored
+                    UserService.storeUser(content); // Stores user information
+                    handleNavigate('/home', { replace: true }); // Force navigation when token is stored
                 })
             }
             else console.log(response);
@@ -50,11 +52,6 @@ export default function Loginpage2()
         e.preventDefault();
         handleNavigate('create-user');
     }
-
-    useEffect(() =>
-    {
-        console.log(JWTService.getToken)
-    }, [localStorage])
 
     return (
         <div className="relative flex flex-col justify-center pt-20">

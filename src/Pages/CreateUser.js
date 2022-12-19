@@ -48,7 +48,6 @@ export default function CreateUser()
         {
             setSelectedTags(selectedTags.concat(value)); // Add to selected tags 
         }
-        console.log(selectedTags)
         event.preventDefault();
     }
 

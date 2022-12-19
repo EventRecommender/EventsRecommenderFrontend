@@ -12,7 +12,6 @@ import Home from './Pages/Home';
 import Login from './Pages/Login';
 import CreateUser from './Pages/CreateUser';
 import NotFound from './Pages/NotFound';
-import { AuthProvider } from './Context/AuthProvider'; 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -22,7 +21,7 @@ root.render(
       <Route element={<OuterLayer />} >
         <Route element={<AuthRouter />}>
           <Route element={<AuthLayer />}>
-            <Route element={<Home />} />
+            <Route index path='/home' element={<Home />} />
           </Route>
         </Route>
         <Route path='/' element={<Login />} />
