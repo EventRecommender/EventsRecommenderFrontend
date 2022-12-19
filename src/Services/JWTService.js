@@ -1,6 +1,5 @@
 import jwt_decode from 'jwt-decode';
 
-// Foo
 class JWTService
 {
     getToken()
