@@ -2,10 +2,10 @@ import UserService from "./UserService";
 
 class APIService
 {
-    async getIncomingActivities(monthsForward, area)
+    async getIncomingActivities()
     {
         let url = new URL('/getIncommingActivities', window.location.origin),
-            params = { monthsForward: monthsForward, area: area }
+            params = { monthsForward: 20, area: UserService.getArea() }
         Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))
 
         const response = await fetch(url);

@@ -4,6 +4,7 @@ import Calendar from '../Components/Student/Calendar';
 import RecommendedEvents from '../Components/Student/RecommendedEvents';
 import ContextWrapper from '../Context/ContextWrapper';
 import APIService from '../Services/APIService';
+import StorageService from '../Services/StorageService';
 import UserService from '../Services/UserService';
 
 // Add bigger fonts to button group
@@ -17,10 +18,10 @@ export default function Student()
 	useEffect(() =>
 	{
 		APIService.getRecommendations();
-		APIService.getIncomingActivities(20, UserService.getRole())
+		APIService.getIncomingActivities();
 
-		setRecommendations(JSON.parse(localStorage.getItem('recommendations')))
-		setIncomingActivities(JSON.parse(localStorage.getItem('recommendations')))
+		setRecommendations(StorageService.getRecommendedActivities());
+		setIncomingActivities(StorageService.getIncomingActivities());
 	}, []);
 
 	return (

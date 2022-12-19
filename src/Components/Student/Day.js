@@ -7,7 +7,8 @@ import UserService from '../../Services/UserService';
 
 export default function Day({ day, rowIdx}) 
 {
-  const [activities, setActivities] = useState(APIService.getIncomingActivities(20, UserService.getArea()).filter((activity) => dayjs(activity.date).format('DD/MM/YY') === day.format('DD/MM/YY')));
+  const [activities, setActivities] = useState([])
+  // getIncomingActivities(20, UserService.getArea()).filter((activity) => dayjs(activity.date).format('DD/MM/YY') === day.format('DD/MM/YY')));
   
   function highlightCurrentDate()
   {
