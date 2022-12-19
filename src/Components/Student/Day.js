@@ -1,22 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import dayjs from 'dayjs';
 
-import GlobalContext from '../../Context/GlobalContext';
-import APIService from '../../Services/APIService';
-import UserService from '../../Services/UserService';
-import StorageService from '../../Services/StorageService';
-
-export default function Day({ day, rowIdx}) 
+export default function Day({ day, rowIdx, incommingActivities }) 
 {
-  const [activities, setActivities] = useState([]);
-  // StorageService.getIncomingActivities().filter((activity) => dayjs(activity.date).format('DD/MM/YY') === day.format('DD/MM/YY')));
+  const activities = incommingActivities.filter((activity) => dayjs(activity.date).format('DD/MM/YY') === day.format('DD/MM/YY'));
 
-  useEffect(() =>
-  {
-    setActivities(StorageService.getIncomingActivities().filter((activity) => dayjs(activity.date).format('DD/MM/YY') === day.format('DD/MM/YY')));
-  }, [])
-  
-  
   function highlightCurrentDate()
   {
     return day.format('DD/MM/YY') === dayjs().format('DD/MM/YY') ? 'bg-blue-600 text-white rounded-full w-7 ' : ""
@@ -35,14 +23,14 @@ export default function Day({ day, rowIdx})
         </p>
       </header>
       <div className='flex-1 cursor pointer'>
-      {
-        activities.map((activity, idx) => 
-        (
-          <div className="p-1 mr-3 text-gray-600 text-sm rounded mb-1 truncate"> 
-            {activity.title}
-          </div>
-        ))
-      }
+        {
+          activities.map((activity, idx) =>
+          (
+            <div className="p-1 mr-3 text-gray-600 text-sm rounded mb-1 truncate">
+              {activity.title}
+            </div>
+          ))
+        }
       </div>
     </div>
   )
