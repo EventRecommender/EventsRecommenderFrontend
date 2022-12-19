@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import APIService from '../../Services/APIService'
+import StorageService from '../../Services/StorageService';
 import UserService from '../../Services/UserService'
 
 import Activity from './Activity'
@@ -7,7 +8,7 @@ import Activity from './Activity'
 
 export default function RecommendedEvents() 
 {
-  const [recommendations, setRecommendations] = useState(APIService.getRecommendations(20, UserService.getArea()));
+  const [recommendations, setRecommendations] = useState(StorageService.getRecommendedActivities());
 
   return ( 
       <React.Fragment> 
