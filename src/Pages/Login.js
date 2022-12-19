@@ -37,6 +37,7 @@ export default function Loginpage2()
                 response.json().then((content) =>
                 {
                     JWTService.setToken(content.token); // Sets user token in local storage
+                    console.log(`Token: ${JWTService.getDecodedToken(content.token)}`)
                     UserService.storeUser(content); // Stores user information
                     handleNavigate('/home', { replace: true }); // Force navigation when token is stored
                 })
