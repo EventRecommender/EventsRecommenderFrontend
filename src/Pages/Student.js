@@ -19,9 +19,6 @@ export default function Student()
 	{
 		APIService.getRecommendations();
 		APIService.getIncomingActivities();
-
-		setRecommendations(StorageService.getRecommendedActivities());
-		setIncomingActivities(StorageService.getIncomingActivities());
 	}, []);
 
 	return (
